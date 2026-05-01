@@ -1,0 +1,19 @@
+{
+  "name": "figma-local-mcp",
+  "private": true,
+  "description": "Local Figma Desktop MCP bridge with official-style Figma MCP tools.",
+  "workspaces": [
+    "mcp-server"
+  ],
+  "scripts": {
+    "start": "npm --workspace figma-local-mcp-server start",
+    "dev": "npm --workspace figma-local-mcp-server run dev",
+    "check": "npm --workspace figma-local-mcp-server run check",
+    "check:plugin": "node --check figma-plugin/code.js",
+    "test": "npm --workspace figma-local-mcp-server test",
+    "validate": "npm run check && npm run check:plugin && npm test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

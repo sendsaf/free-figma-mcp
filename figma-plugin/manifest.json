@@ -1,0 +1,9 @@
+{
+  "name": "Figma Local MCP Bridge",
+  "id": "local-figma-mcp-bridge",
+  "api": "1.0.0",
+  "main": "code.js",
+  "ui": "ui.html",
+  "editorType": ["figma", "figjam"],
+  "capabilities": ["textreview"]
+}

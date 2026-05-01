@@ -1,0 +1,11 @@
+node_modules/
+mcp-server/node_modules/
+.figma-mcp/
+.kiro/settings/mcp.json
+
+*.log
+npm-debug.log*
+.env
+.env.*
+.DS_Store
+Thumbs.db

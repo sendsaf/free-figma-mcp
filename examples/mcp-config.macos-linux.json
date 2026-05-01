@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "figma-local-mcp": {
+      "command": "node",
+      "args": [
+        "/path/to/figma-local-mcp/mcp-server/server.js"
+      ],
+      "env": {}
+    }
+  }
+}

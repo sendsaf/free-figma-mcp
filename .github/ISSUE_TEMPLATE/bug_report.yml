@@ -1,0 +1,40 @@
+name: Bug report
+description: Report a reproducible Figma Local MCP issue
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What happened?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+      description: Include the IDE, MCP config, Figma Desktop state, selected node, and tool call.
+      placeholder: |
+        1. Start MCP server...
+        2. Open Figma plugin...
+        3. Call get_design_context...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: Paste relevant MCP server logs and plugin UI logs. Remove secrets.
+      render: text
+  - type: input
+    id: versions
+    attributes:
+      label: Environment
+      placeholder: Windows 11, Node 22, Figma Desktop version, IDE name

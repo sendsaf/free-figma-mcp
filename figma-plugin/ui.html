@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Figma Local MCP Bridge</title>
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: #101116;
+        color: #f3f4f8;
+        min-height: 100vh;
+        overflow: hidden;
+      }
+      .panel {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding: 12px;
+      }
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+      }
+      .title {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        min-width: 0;
+      }
+      .mark {
+        width: 22px;
+        height: 22px;
+        border-radius: 6px;
+        background: #4f7cff;
+        color: white;
+        display: grid;
+        place-items: center;
+        font-size: 12px;
+        font-weight: 700;
+      }
+      h1 {
+        font-size: 12px;
+        line-height: 1.2;
+        font-weight: 650;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .subtle {
+        color: #8d93a5;
+        font-size: 10px;
+        line-height: 1.2;
+      }
+      .actions {
+        display: flex;
+        gap: 4px;
+        flex-shrink: 0;
+      }
+      button {
+        border: 1px solid #2b2f3a;
+        background: #181b23;
+        color: #e7e9f1;
+        border-radius: 6px;
+        height: 26px;
+        min-width: 26px;
+        padding: 0 8px;
+        font-size: 11px;
+        cursor: pointer;
+      }
+      button:hover { background: #202532; }
+      button:active { background: #283044; }
+      button.danger {
+        border-color: #563034;
+        background: #2a1518;
+        color: #ffd8dc;
+      }
+      button.danger:hover { background: #3a1b20; }
+      button:disabled {
+        opacity: .45;
+        cursor: default;
+      }
+      .status-card {
+        border: 1px solid #242834;
+        background: #151820;
+        border-radius: 8px;
+        padding: 10px;
+        display: grid;
+        gap: 8px;
+      }
+      .status-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+      }
+      .state {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        min-width: 0;
+      }
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #6b7280;
+        flex-shrink: 0;
+      }
+      .dot.connected { background: #35d07f; box-shadow: 0 0 8px rgba(53, 208, 127, 0.45); }
+      .dot.error { background: #ff5f57; }
+      .dot.connecting { background: #f2b84b; animation: pulse 1s infinite; }
+      @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.45} }
+      #status {
+        font-size: 12px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+      .metrics {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+      .metric {
+        border: 1px solid #242834;
+        background: #11141b;
+        border-radius: 7px;
+        padding: 8px;
+      }
+      .metric strong {
+        display: block;
+        font-size: 13px;
+        line-height: 1.2;
+      }
+      .toolbar {
+        display: flex;
+        gap: 6px;
+      }
+      .toolbar button {
+        flex: 1;
+      }
+      #log {
+        background: #0b0d12;
+        border: 1px solid #242834;
+        border-radius: 8px;
+        padding: 8px;
+        min-height: 74px;
+        height: calc(100vh - 178px);
+        overflow-y: auto;
+        font: 11px/1.45 ui-monospace, SFMono-Regular, Consolas, monospace;
+        color: #9aa3b7;
+      }
+      .resize-grip {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        width: 18px;
+        height: 18px;
+        cursor: nwse-resize;
+      }
+      .resize-grip:before,
+      .resize-grip:after {
+        content: "";
+        position: absolute;
+        right: 4px;
+        bottom: 4px;
+        border-right: 1px solid #4f586b;
+        border-bottom: 1px solid #4f586b;
+      }
+      .resize-grip:before {
+        width: 12px;
+        height: 12px;
+      }
+      .resize-grip:after {
+        width: 7px;
+        height: 7px;
+      }
+      .collapsed .panel {
+        padding: 8px 10px;
+      }
+      .collapsed .status-card,
+      .collapsed .toolbar,
+      .collapsed #log,
+      .collapsed .resize-grip {
+        display: none;
+      }
+      .collapsed .subtle {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="panel">
+      <div class="topbar">
+        <div class="title">
+          <div class="mark">M</div>
+          <div>
+            <h1>Figma Local MCP</h1>
+            <div class="subtle">Bridge for IDE agents</div>
+          </div>
+        </div>
+        <div class="actions">
+          <button id="bridgeToggle" title="Start or disconnect the WebSocket bridge">Start</button>
+          <button id="stop" class="danger" title="Stop the active MCP request" disabled>Stop</button>
+          <button id="collapse" title="Collapse plugin window">Min</button>
+        </div>
+      </div>
+
+      <div class="status-card">
+        <div class="status-row">
+          <div class="state">
+            <div class="dot connecting" id="dot"></div>
+            <span id="status">Connecting to ws://localhost:3055</span>
+          </div>
+          <div class="subtle" id="lastSeen">Never</div>
+        </div>
+        <div class="metrics">
+          <div class="metric">
+            <span class="subtle">Commands</span>
+            <strong id="commandCount">0</strong>
+          </div>
+          <div class="metric">
+            <span class="subtle">Last command</span>
+            <strong id="lastCommand">None</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <button id="focusSelection">Focus selection</button>
+        <button id="clearLog">Clear log</button>
+      </div>
+
+      <div id="log"></div>
+      <div id="resizeGrip" class="resize-grip" title="Drag to resize"></div>
+    </div>
+
+    <script>
+      var statusEl = document.getElementById("status");
+      var dotEl = document.getElementById("dot");
+      var logEl = document.getElementById("log");
+      var countEl = document.getElementById("commandCount");
+      var lastCommandEl = document.getElementById("lastCommand");
+      var lastSeenEl = document.getElementById("lastSeen");
+      var bridgeToggleButton = document.getElementById("bridgeToggle");
+      var stopButton = document.getElementById("stop");
+      var collapseButton = document.getElementById("collapse");
+      var focusButton = document.getElementById("focusSelection");
+      var clearButton = document.getElementById("clearLog");
+      var resizeGrip = document.getElementById("resizeGrip");
+
+      var socket = null;
+      var collapsed = false;
+      var commandCount = 0;
+      var activeRequestId = null;
+      var activeCommandType = null;
+      var currentWidth = 340;
+      var currentHeight = 270;
+      var resizeStart = null;
+      var manualClose = false;
+
+      function postToPlugin(message) {
+        parent.postMessage({ pluginMessage: message }, "*");
+      }
+
+      function log(message) {
+        var line = document.createElement("div");
+        line.textContent = "[" + new Date().toLocaleTimeString() + "] " + message;
+        logEl.appendChild(line);
+        logEl.scrollTop = logEl.scrollHeight;
+      }
+
+      function setStatus(state, text) {
+        dotEl.className = "dot " + state;
+        statusEl.textContent = text;
+        lastSeenEl.textContent = new Date().toLocaleTimeString();
+      }
+
+      function setActiveRequest(requestId, commandType) {
+        activeRequestId = requestId || null;
+        activeCommandType = commandType || null;
+        stopButton.disabled = !activeRequestId;
+      }
+
+      function resizePlugin(width, height) {
+        currentWidth = Math.max(260, Math.min(900, Math.round(width)));
+        currentHeight = Math.max(54, Math.min(760, Math.round(height)));
+        postToPlugin({
+          type: "resize_ui",
+          width: currentWidth,
+          height: currentHeight
+        });
+      }
+
+      function closeSocket() {
+        if (socket) {
+          manualClose = true;
+          socket.onclose = null;
+          socket.close();
+          socket = null;
+        }
+      }
+
+      function connect() {
+        closeSocket();
+        manualClose = false;
+        bridgeToggleButton.textContent = "Connecting";
+        bridgeToggleButton.disabled = true;
+        setStatus("connecting", "Connecting to ws://localhost:3055");
+        socket = new WebSocket("ws://localhost:3055");
+
+        socket.onopen = function() {
+          setStatus("connected", "Connected to MCP bridge");
+          bridgeToggleButton.textContent = "Disconnect";
+          bridgeToggleButton.disabled = false;
+          socket.send(JSON.stringify({
+            type: "hello",
+            role: "figma",
+            client: "local-figma-plugin"
+          }));
+          postToPlugin({ type: "bridge-connected" });
+          log("Connected");
+        };
+
+        socket.onmessage = function(event) {
+          var command;
+          try {
+            command = JSON.parse(event.data);
+          } catch (error) {
+            return;
+          }
+
+          commandCount += 1;
+          countEl.textContent = String(commandCount);
+          lastCommandEl.textContent = command.type || "unknown";
+          setActiveRequest(command.requestId, command.type);
+          log("<- " + (command.type || "unknown"));
+          postToPlugin(command);
+        };
+
+        socket.onerror = function() {
+          setStatus("error", "WebSocket error");
+          log("Connection error");
+          bridgeToggleButton.textContent = "Start";
+          bridgeToggleButton.disabled = false;
+        };
+
+        socket.onclose = function() {
+          socket = null;
+          bridgeToggleButton.textContent = "Start";
+          bridgeToggleButton.disabled = false;
+          setActiveRequest(null, null);
+          if (manualClose) {
+            setStatus("error", "Bridge disconnected");
+            log("Disconnected by user");
+            return;
+          }
+          setStatus("error", "Disconnected; press Start");
+          log("Disconnected");
+        };
+      }
+
+      window.onmessage = function(event) {
+        var msg = event.data.pluginMessage;
+        if (!msg) return;
+        if (socket && socket.readyState === WebSocket.OPEN) {
+          log("-> " + (msg.type || "result"));
+          socket.send(JSON.stringify(msg));
+          if (msg.requestId && msg.requestId === activeRequestId) {
+            setActiveRequest(null, null);
+          }
+        }
+      };
+
+      bridgeToggleButton.onclick = function() {
+        if (socket && socket.readyState === WebSocket.OPEN) {
+          log("Disconnect requested");
+          closeSocket();
+          bridgeToggleButton.textContent = "Start";
+          bridgeToggleButton.disabled = false;
+          setActiveRequest(null, null);
+          setStatus("error", "Bridge disconnected");
+          return;
+        }
+        log("Start requested");
+        connect();
+      };
+
+      clearButton.onclick = function() {
+        logEl.innerHTML = "";
+      };
+
+      stopButton.onclick = function() {
+        if (!activeRequestId) return;
+        var stoppedId = activeRequestId;
+        log("Stop requested for " + (activeCommandType || "active command"));
+        postToPlugin({ type: "stop_current", requestId: stoppedId });
+        if (socket && socket.readyState === WebSocket.OPEN) {
+          socket.send(JSON.stringify({
+            type: "result",
+            requestId: stoppedId,
+            ok: false,
+            stopped: true,
+            error: "Stopped by user from the Figma Local MCP Bridge UI."
+          }));
+        }
+        setActiveRequest(null, null);
+      };
+
+      focusButton.onclick = function() {
+        postToPlugin({ type: "focus_selection" });
+      };
+
+      collapseButton.onclick = function() {
+        collapsed = !collapsed;
+        document.body.className = collapsed ? "collapsed" : "";
+        collapseButton.textContent = collapsed ? "Open" : "Min";
+        collapseButton.title = collapsed ? "Expand plugin window" : "Collapse plugin window";
+        resizePlugin(collapsed ? 260 : 340, collapsed ? 54 : 270);
+      };
+
+      resizeGrip.onmousedown = function(event) {
+        if (collapsed) return;
+        resizeStart = {
+          x: event.clientX,
+          y: event.clientY,
+          width: currentWidth,
+          height: currentHeight
+        };
+        event.preventDefault();
+      };
+
+      window.onmousemove = function(event) {
+        if (!resizeStart) return;
+        resizePlugin(
+          resizeStart.width + event.clientX - resizeStart.x,
+          resizeStart.height + event.clientY - resizeStart.y
+        );
+      };
+
+      window.onmouseup = function() {
+        resizeStart = null;
+      };
+
+      setStatus("error", "Press Start to connect");
+    </script>
+  </body>
+</html>
