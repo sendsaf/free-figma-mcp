@@ -1,3 +1,4 @@
+![Figma Local MCP](./assets/local-figma-mcp.png)
 # Figma Local MCP
 
 Run Figma through your own local MCP server.
