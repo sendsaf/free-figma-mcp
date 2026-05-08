@@ -91,7 +91,7 @@ The local bridge is multi-client aware. If two IDEs start the MCP server, the fi
 
 2. **Install the power in Kiro**
    - Open Kiro
-   - Open the Powers panel (Command Palette → "Open Powers")
+   - Open the Powers panel (Command Palette -> "Open Powers")
    - Click **"Add Custom Power"** button
    - Select **"Local Directory"**
    - Enter the full path to: `<repo>/powers/local-figma`
@@ -124,6 +124,7 @@ The power includes comprehensive steering files for different workflows:
 ```bash
 npm install
 npm run validate
+npm run mcp:config
 ```
 
 **2. Import the Figma plugin**
@@ -139,6 +140,18 @@ Use one of the examples:
 - [examples/mcp-config.windows.json](examples/mcp-config.windows.json)
 - [examples/mcp-config.macos-linux.json](examples/mcp-config.macos-linux.json)
 - [examples/kiro-power-mcp.json](examples/kiro-power-mcp.json)
+
+Or print a ready-to-copy config for your current clone:
+
+```bash
+npm run mcp:config
+```
+
+For Kiro power-style config:
+
+```bash
+npm run mcp:config:kiro
+```
 
 Point your MCP client at:
 
@@ -158,10 +171,9 @@ Point your MCP client at:
 
 The Figma plugin UI is built for real use:
 
-- `Start` / `Disconnect`: manually connect or disconnect the bridge.
-- `Stop`: return control to the active MCP caller.
-- Resize grip: resize the plugin window.
-- `Min` / `Open`: collapse or expand the panel.
+- `Start`: connect to the local bridge.
+- `Stop`: return control to the active MCP caller, or disconnect the bridge when no command is active.
+- `Minimize` / `Open`: collapse or expand the panel.
 - `Focus selection`: jump Figma viewport to the current selection.
 - Logs and command count: see what the bridge is doing.
 
@@ -230,6 +242,10 @@ powers/
 - The Stop button can unblock the MCP caller immediately, but long synchronous Figma scripts need to cooperate with `mcp.shouldStop()` or `mcp.throwIfStopped()`.
 
 See [docs/OFFICIAL_COMPATIBILITY.md](docs/OFFICIAL_COMPATIBILITY.md) for compatibility details.
+
+## Recording A Demo
+
+For a short video walkthrough, see [docs/DEMO_RECORDING.md](docs/DEMO_RECORDING.md). It includes a preflight checklist, copy-paste MCP config commands, and a simple demo script.
 
 ## Security
 

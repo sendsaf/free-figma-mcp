@@ -14,6 +14,18 @@ Use one of the [examples](../examples) as the base config:
 }
 ```
 
+Or print a ready-to-copy config for the current clone:
+
+```bash
+npm run mcp:config
+```
+
+For Kiro power-style config:
+
+```bash
+npm run mcp:config:kiro
+```
+
 ## Session Startup
 
 1. Open Figma Desktop.
@@ -112,14 +124,13 @@ Prefer enabling only one local Figma entry per Kiro workspace to avoid duplicate
 
 The Figma plugin UI includes:
 
-- `Start` / `Disconnect`: manually connects or disconnects the WebSocket bridge. The plugin does not auto-retry when the bridge is down.
-- `Stop`: returns control to the active MCP caller and marks the active plugin request as stopped.
-- `Min` / `Open`: collapses or expands the plugin window.
-- Bottom-right resize grip: drag to resize the plugin window.
+- `Start`: connects to the WebSocket bridge.
+- `Stop`: returns control to the active MCP caller, or disconnects the bridge when no command is active.
+- `Minimize` / `Open`: collapses or expands the plugin window.
 - `Focus selection`: scrolls and zooms the Figma viewport to the current selection.
 - `Clear log`: clears local bridge activity logs.
 
-Figma plugins cannot force a true OS-level always-on-top overlay outside Figma. The local bridge can resize and collapse its Figma plugin window, but Figma controls the windowing model.
+Figma plugins cannot force a true OS-level always-on-top overlay outside Figma. The local bridge can collapse its Figma plugin window, but Figma controls the windowing model.
 
 The `Stop` control cannot forcibly terminate Figma's JavaScript VM in the middle of a synchronous operation. It immediately sends a stopped result back to the MCP caller and signals the plugin sandbox. Long custom `use_figma` scripts should periodically call `mcp.throwIfStopped()` or check `mcp.shouldStop()` inside loops.
 

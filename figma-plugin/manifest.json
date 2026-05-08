@@ -5,5 +5,10 @@
   "main": "code.js",
   "ui": "ui.html",
   "editorType": ["figma", "figjam"],
+  "documentAccess": "dynamic-page",
+  "networkAccess": {
+    "allowedDomains": ["ws://localhost:3055"],
+    "reasoning": "Connects to the user's local Figma Local MCP server running on their own machine."
+  },
   "capabilities": ["textreview"]
 }

@@ -4,7 +4,7 @@
 // and executes them via the Figma Plugin API.
 // =============================================================================
 
-figma.showUI(__html__, { width: 340, height: 270, title: "Figma Local MCP" });
+figma.showUI(__html__, { width: 340, height: 380, title: "Figma Local MCP" });
 
 var activeRequestId = null;
 var stoppedRequests = {};

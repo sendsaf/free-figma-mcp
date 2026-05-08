@@ -8,6 +8,8 @@
   "scripts": {
     "start": "npm --workspace figma-local-mcp-server start",
     "dev": "npm --workspace figma-local-mcp-server run dev",
+    "mcp:config": "node scripts/print-mcp-config.js",
+    "mcp:config:kiro": "node scripts/print-mcp-config.js --kiro",
     "check": "npm --workspace figma-local-mcp-server run check",
     "check:plugin": "node --check figma-plugin/code.js",
     "test": "npm --workspace figma-local-mcp-server test",
