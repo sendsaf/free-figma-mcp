@@ -1,4 +1,5 @@
 ![Figma Local MCP](./assets/local-figma-mcp.png)
+
 # Figma Local MCP
 
 Run Figma through your own local MCP server.
@@ -23,17 +24,17 @@ Figma Local MCP is that bridge.
 
 ## What Makes It Stand Out
 
-| Capability | Figma Local MCP |
-|---|---|
-| Works with any MCP client | Yes. IDEs, CLIs, and agents that support MCP can use it. |
-| Requires Claude Code | No. Claude Code can use it, but it is not required. |
-| Uses Figma Desktop directly | Yes. The active desktop file is the runtime target. |
-| Avoids remote MCP quotas for local workflows | Yes. Local tool calls route through your own bridge. |
-| Multi-IDE friendly | Yes. First process owns the bridge; later IDEs relay through it. |
-| Official-style tool names | Yes. Agents see familiar Figma MCP-style tools. |
-| Local Code Connect-style mappings | Yes. Mappings are stored locally as JSON. |
-| Agent skills and Kiro power | Included. |
-| Open and hackable | Yes. Plain Node server plus Figma plugin files. |
+| Capability                                   | Figma Local MCP                                                  |
+| -------------------------------------------- | ---------------------------------------------------------------- |
+| Works with any MCP client                    | Yes. IDEs, CLIs, and agents that support MCP can use it.         |
+| Requires Claude Code                         | No. Claude Code can use it, but it is not required.              |
+| Uses Figma Desktop directly                  | Yes. The active desktop file is the runtime target.              |
+| Avoids remote MCP quotas for local workflows | Yes. Local tool calls route through your own bridge.             |
+| Multi-IDE friendly                           | Yes. First process owns the bridge; later IDEs relay through it. |
+| Official-style tool names                    | Yes. Agents see familiar Figma MCP-style tools.                  |
+| Local Code Connect-style mappings            | Yes. Mappings are stored locally as JSON.                        |
+| Agent skills and Kiro power                  | Included.                                                        |
+| Open and hackable                            | Yes. Plain Node server plus Figma plugin files.                  |
 
 ## Tool Surface
 
@@ -73,53 +74,11 @@ Any MCP-capable IDE / CLI / agent
 
 The local bridge is multi-client aware. If two IDEs start the MCP server, the first process owns the WebSocket bridge and the later processes relay through it instead of crashing on port `3055`.
 
-## Quick Start
+## Installation
 
-### Option A: Install as Kiro Power (Recommended for Kiro Users)
+Use this setup for any MCP-capable IDE, CLI, or agent that accepts a standard `mcpServers` config.
 
-**Prerequisites:**
-1. Clone or download this repository
-2. Run `npm install` from the repository root
-3. Import the Figma plugin (see step 2 below)
-
-**Installation Steps:**
-
-1. **Import the Figma plugin**
-   - Open Figma Desktop
-   - Go to `Plugins -> Development -> Import plugin from manifest`
-   - Select `figma-plugin/manifest.json` from this repository
-
-2. **Install the power in Kiro**
-   - Open Kiro
-   - Open the Powers panel (Command Palette -> "Open Powers")
-   - Click **"Add Custom Power"** button
-   - Select **"Local Directory"**
-   - Enter the full path to: `<repo>/powers/local-figma`
-   - Click **"Add"**
-
-3. **Configure the server path**
-   - After installation, the power will be at `~/.kiro/powers/local-figma/`
-   - Edit `~/.kiro/powers/local-figma/mcp.json`
-   - Replace `PLACEHOLDER_SERVER_PATH` with your actual path:
-     - Windows: `D:\\path\\to\\figma-local-mcp\\mcp-server\\server.js`
-     - macOS/Linux: `/path/to/figma-local-mcp/mcp-server/server.js`
-
-4. **Start using it**
-    - In Figma Desktop, run `Plugins -> Development -> Figma Local MCP Bridge`
-   - Press `Start` in the plugin window
-   - Select a layer in Figma
-   - Ask Kiro: "Get metadata for the current Figma selection"
-
-The power includes comprehensive steering files for different workflows:
-- `steering/use-figma.md` - Creating/editing Figma objects
-- `steering/implement-design.md` - Implementing code from Figma designs
-- `steering/use-figjam.md` - Working with FigJam boards
-- `steering/code-connect.md` - Code Connect-style mappings
-- `steering/setup.md` - Setup and troubleshooting
-
-### Option B: Manual MCP Configuration (Other MCP Clients)
-
-**1. Install from the repo root**
+**1. Install from the repository root**
 
 ```bash
 npm install
@@ -127,45 +86,115 @@ npm run validate
 npm run mcp:config
 ```
 
-**2. Import the Figma plugin**
+The `npm run mcp:config` command prints a ready-to-copy config using the real path to your clone.
+
+**2. Add the MCP server to your IDE**
+
+Paste the generated JSON into your IDE's MCP config:
+
+```json
+{
+  "mcpServers": {
+    "figma-local-mcp": {
+      "command": "node",
+      "args": ["/absolute/path/to/figma-local-mcp/mcp-server/server.js"],
+      "env": {}
+    }
+  }
+}
+```
+
+You can also start from these files:
+
+- [examples/mcp-config.windows.json](examples/mcp-config.windows.json)
+- [examples/mcp-config.macos-linux.json](examples/mcp-config.macos-linux.json)
+- [examples/antigravity-mcp-config.json](examples/antigravity-mcp-config.json)
+
+**3. Import the Figma plugin**
 
 1. Open Figma Desktop.
 2. Go to `Plugins -> Development -> Import plugin from manifest`.
 3. Select `figma-plugin/manifest.json`.
-
-**3. Configure your MCP client**
-
-Use one of the examples:
-
-- [examples/mcp-config.windows.json](examples/mcp-config.windows.json)
-- [examples/mcp-config.macos-linux.json](examples/mcp-config.macos-linux.json)
-- [examples/kiro-power-mcp.json](examples/kiro-power-mcp.json)
-
-Or print a ready-to-copy config for your current clone:
-
-```bash
-npm run mcp:config
-```
-
-For Kiro power-style config:
-
-```bash
-npm run mcp:config:kiro
-```
-
-Point your MCP client at:
-
-```text
-<repo>/mcp-server/server.js
-```
 
 **4. Start a Figma session**
 
 1. Start your IDE or CLI MCP client.
 2. In Figma Desktop, run `Plugins -> Development -> Figma Local MCP Bridge`.
 3. Press `Start` in the plugin window.
-4. Select a frame, component, or layer.
+4. Open or create a Figma draft.
 5. Ask your agent to call `get_metadata`, `get_design_context`, or `use_figma`.
+
+## Try A Demo Prompt
+
+Use this from a blank Figma draft to verify the full local write flow:
+
+```text
+Use Figma Local MCP to build a polished SaaS analytics dashboard in my currently open blank Figma draft.
+
+Requirements:
+- Use the active Figma file and create everything locally through the Figma Local MCP tools.
+- Create one desktop frame named "Local MCP Analytics Dashboard" at 1440 x 1024.
+- Design a realistic product dashboard for a fictional usage analytics tool called "SignalBoard".
+- Include a left navigation rail, top command bar, KPI cards, a line chart area, a usage breakdown section, recent activity, and a compact settings panel.
+- Use a restrained professional visual style with neutral surfaces, blue and green accents, clear hierarchy, and production-quality spacing.
+- Use auto layout where practical.
+- Create readable text layers, realistic numbers, and grouped sections with meaningful layer names.
+- After creating the frame, use get_metadata to summarize what was created and get_screenshot to verify the result.
+```
+
+Good follow-up prompts:
+
+```text
+Use Figma Local MCP to tighten spacing, align the dashboard sections, and improve visual hierarchy.
+```
+
+```text
+Use Figma Local MCP to add a small onboarding callout and a selected state in the left navigation.
+```
+
+## Antigravity Setup
+
+Antigravity uses the same standard `mcpServers` shape.
+
+Print config for the current clone:
+
+```bash
+npm run mcp:config:antigravity
+```
+
+1. Open Antigravity.
+2. Open the Agent panel.
+3. Use the menu in the Agent panel to open `Manage MCP Servers`.
+4. Open the raw MCP config.
+5. Paste the generated JSON into the `mcpServers` config.
+6. Save and restart Antigravity so it reloads the MCP server.
+
+If you prefer editing a file directly, Antigravity commonly stores the raw MCP config at:
+
+```text
+~/.gemini/antigravity/mcp_config.json
+```
+
+You can also start from [examples/antigravity-mcp-config.json](examples/antigravity-mcp-config.json), but the `npm run mcp:config:antigravity` command is better for demos because it prints the real path for your clone.
+
+## Kiro Power Setup
+
+Kiro users can use the standard MCP config above, or install the included power package for extra steering files.
+
+1. Open Kiro.
+2. Open the Powers panel from the Command Palette.
+3. Click **Add Custom Power**.
+4. Select **Local Directory**.
+5. Enter the full path to `<repo>/powers/local-figma`.
+6. Edit `~/.kiro/powers/local-figma/mcp.json` and replace `PLACEHOLDER_SERVER_PATH` with your local `mcp-server/server.js` path.
+
+For Kiro power-style config, you can print a ready-to-copy snippet:
+
+```bash
+npm run mcp:config:kiro
+```
+
+The power includes steering files for `use_figma`, design implementation, FigJam, Code Connect-style mappings, setup, and troubleshooting.
 
 ## Plugin Control Panel
 
@@ -195,13 +224,13 @@ Kiro power:
 
 ## Local vs Remote Figma MCP
 
-| Remote Figma MCP | Figma Local MCP |
-|---|---|
-| Hosted by Figma | Runs on your machine |
-| Works from Figma cloud context | Works from active Figma Desktop file |
-| Can hit hosted MCP limits | Local bridge calls do not consume hosted MCP quota |
-| Requires remote service availability | Requires Figma Desktop and the local plugin |
-| Great for official cloud workflows | Great for local IDE and desktop automation |
+| Remote Figma MCP                     | Figma Local MCP                                    |
+| ------------------------------------ | -------------------------------------------------- |
+| Hosted by Figma                      | Runs on your machine                               |
+| Works from Figma cloud context       | Works from active Figma Desktop file               |
+| Can hit hosted MCP limits            | Local bridge calls do not consume hosted MCP quota |
+| Requires remote service availability | Requires Figma Desktop and the local plugin        |
+| Great for official cloud workflows   | Great for local IDE and desktop automation         |
 
 This is not a replacement for every remote MCP feature. It is a local-first execution path for agents that need fast, hackable, desktop-connected Figma access.
 
@@ -245,7 +274,7 @@ See [docs/OFFICIAL_COMPATIBILITY.md](docs/OFFICIAL_COMPATIBILITY.md) for compati
 
 ## Recording A Demo
 
-For a short video walkthrough, see [docs/DEMO_RECORDING.md](docs/DEMO_RECORDING.md). It includes a preflight checklist, copy-paste MCP config commands, and a simple demo script.
+For a short video walkthrough, the Antigravity setup above is enough to record without opening another document. A longer checklist is available in [docs/DEMO_RECORDING.md](docs/DEMO_RECORDING.md).
 
 ## Security
 
