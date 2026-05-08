@@ -108,6 +108,9 @@ export function createFigmaBridge({ port, logger = console.error }) {
     if (message.type === "hello") {
       ws.role = message.role || "unknown";
       if (ws.role === "figma") {
+        if (figmaSocket && figmaSocket !== ws && figmaSocket.readyState === WS_OPEN) {
+          figmaSocket.close(1000, "Replaced by a new Figma plugin connection.");
+        }
         figmaSocket = ws;
         logger("[bridge] Figma plugin connected");
       } else if (ws.role === "mcp-client") {
@@ -211,10 +214,39 @@ export function createFigmaBridge({ port, logger = console.error }) {
   }
 
   function enqueueDirectToFigma(command, timeoutMs = 15_000, relaySocket = null, relayRequestId = null) {
-    const run = () => sendDirectToFigma(command, timeoutMs, relaySocket, relayRequestId);
-    const result = figmaCommandQueue.then(run, run);
-    figmaCommandQueue = result.catch(() => {});
-    return result;
+    const queuedAt = Date.now();
+    let expired = false;
+
+    const run = () => {
+      if (expired) {
+        throw new Error(`Timed out waiting for Figma command queue (${Math.round(timeoutMs / 1000)}s).`);
+      }
+
+      const elapsedMs = Date.now() - queuedAt;
+      const remainingMs = Math.max(1, timeoutMs - elapsedMs);
+      return sendDirectToFigma(command, remainingMs, relaySocket, relayRequestId);
+    };
+
+    const queued = figmaCommandQueue.then(run, run);
+    figmaCommandQueue = queued.catch(() => {});
+
+    return new Promise((resolve, reject) => {
+      const timer = setTimeout(() => {
+        expired = true;
+        reject(new Error(`Timed out waiting for Figma command queue (${Math.round(timeoutMs / 1000)}s).`));
+      }, timeoutMs);
+
+      queued.then(
+        (value) => {
+          clearTimeout(timer);
+          resolve(value);
+        },
+        (error) => {
+          clearTimeout(timer);
+          reject(error);
+        }
+      );
+    });
   }
 
   function sendDirectToFigma(command, timeoutMs = 15_000, relaySocket = null, relayRequestId = null) {

@@ -20,6 +20,12 @@ Or print a ready-to-copy config for the current clone:
 npm run mcp:config
 ```
 
+For Antigravity, the same standard config applies:
+
+```bash
+npm run mcp:config:antigravity
+```
+
 For Kiro power-style config:
 
 ```bash
@@ -42,7 +48,7 @@ Multiple IDEs can keep this MCP active at the same time.
 - The Figma plugin should be open only once in the active Figma file; all IDEs route through that bridge owner.
 - You should no longer see `EADDRINUSE` as a fatal startup error. A relay process should log that it is using relay mode.
 
-Keep one Kiro entry enabled for normal use, but this relay support also covers separate IDEs or separate Kiro windows that start their own MCP process.
+Keep one local Figma MCP entry enabled per IDE workspace for normal use, but this relay support also covers separate IDEs or windows that start their own MCP process.
 
 ## Troubleshooting
 
@@ -52,6 +58,15 @@ If tools fail with "Figma plugin is not connected":
 - Confirm Figma Desktop is open.
 - Run the local plugin bridge again.
 - Confirm the plugin window says it is connected to `ws://localhost:3055`.
+
+If the first command logs activity but later commands hang or cannot get data:
+
+- Stop the MCP server from your IDE, or restart the IDE so it restarts the MCP process.
+- Close and rerun `Plugins -> Development -> Figma Local MCP Bridge` in Figma Desktop.
+- Press `Start` again in the plugin window.
+- Try a small command first, such as `get_metadata` on the current selection.
+
+Large `use_figma` write commands can keep the Figma plugin busy until Figma finishes executing the script. The server applies command timeouts, but a long synchronous plugin script may still need the plugin window to be reopened before the next call.
 
 If an agent passes a Figma URL:
 

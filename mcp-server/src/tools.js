@@ -330,7 +330,7 @@ Local server note: fileKey parameters are accepted for compatibility, but this s
       skillNames: z.string().optional().describe("Comma-separated list of skill names being followed, for example `figma-use`.")
     },
     async (args) => {
-      const result = await sendToFigma({ type: "execute_code", code: args.code }, 30_000);
+      const result = await sendToFigma({ type: "execute_code", code: args.code }, 120_000);
 
       if (!result.ok) {
         return {
