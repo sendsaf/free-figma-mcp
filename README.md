@@ -1,4 +1,5 @@
 ![Figma Local MCP](./assets/local-figma-mcp.png)
+
 # Figma Local MCP
 
 Run Figma through your own local MCP server.
@@ -23,17 +24,17 @@ Figma Local MCP is that bridge.
 
 ## What Makes It Stand Out
 
-| Capability | Figma Local MCP |
-|---|---|
-| Works with any MCP client | Yes. IDEs, CLIs, and agents that support MCP can use it. |
-| Requires Claude Code | No. Claude Code can use it, but it is not required. |
-| Uses Figma Desktop directly | Yes. The active desktop file is the runtime target. |
-| Avoids remote MCP quotas for local workflows | Yes. Local tool calls route through your own bridge. |
-| Multi-IDE friendly | Yes. First process owns the bridge; later IDEs relay through it. |
-| Official-style tool names | Yes. Agents see familiar Figma MCP-style tools. |
-| Local Code Connect-style mappings | Yes. Mappings are stored locally as JSON. |
-| Agent skills and Kiro power | Included. |
-| Open and hackable | Yes. Plain Node server plus Figma plugin files. |
+| Capability                                   | Figma Local MCP                                                  |
+| -------------------------------------------- | ---------------------------------------------------------------- |
+| Works with any MCP client                    | Yes. IDEs, CLIs, and agents that support MCP can use it.         |
+| Requires Claude Code                         | No. Claude Code can use it, but it is not required.              |
+| Uses Figma Desktop directly                  | Yes. The active desktop file is the runtime target.              |
+| Avoids remote MCP quotas for local workflows | Yes. Local tool calls route through your own bridge.             |
+| Multi-IDE friendly                           | Yes. First process owns the bridge; later IDEs relay through it. |
+| Official-style tool names                    | Yes. Agents see familiar Figma MCP-style tools.                  |
+| Local Code Connect-style mappings            | Yes. Mappings are stored locally as JSON.                        |
+| Agent skills and Kiro power                  | Included.                                                        |
+| Open and hackable                            | Yes. Plain Node server plus Figma plugin files.                  |
 
 ## Tool Surface
 
@@ -231,13 +232,13 @@ Kiro power:
 
 ## Local vs Remote Figma MCP
 
-| Remote Figma MCP | Figma Local MCP |
-|---|---|
-| Hosted by Figma | Runs on your machine |
-| Works from Figma cloud context | Works from active Figma Desktop file |
-| Can hit hosted MCP limits | Local bridge calls do not consume hosted MCP quota |
-| Requires remote service availability | Requires Figma Desktop and the local plugin |
-| Great for official cloud workflows | Great for local IDE and desktop automation |
+| Remote Figma MCP                     | Figma Local MCP                                    |
+| ------------------------------------ | -------------------------------------------------- |
+| Hosted by Figma                      | Runs on your machine                               |
+| Works from Figma cloud context       | Works from active Figma Desktop file               |
+| Can hit hosted MCP limits            | Local bridge calls do not consume hosted MCP quota |
+| Requires remote service availability | Requires Figma Desktop and the local plugin        |
+| Great for official cloud workflows   | Great for local IDE and desktop automation         |
 
 This is not a replacement for every remote MCP feature. It is a local-first execution path for agents that need fast, hackable, desktop-connected Figma access.
 
