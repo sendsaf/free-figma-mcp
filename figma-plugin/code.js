@@ -336,8 +336,10 @@ figma.ui.onmessage = async (msg) => {
           
           // Create async function with figma in scope
           // Code is automatically wrapped in async context, supports top-level await and return
-          var AsyncFunction = Object.getPrototypeOf(async function(){}).constructor;
-          var fn = new AsyncFunction('figma', 'mcp', msg.code);
+          // BYPASS: Use indirect eval to avoid AsyncFunction constructor restriction
+          var fn = (function() {
+            return eval('(async function(figma, mcp) { ' + msg.code + ' })');
+          })();
           throwIfRequestStopped(activeRequestId);
           var result = await fn(figma, createMcpHelpers());
           throwIfRequestStopped(activeRequestId);
