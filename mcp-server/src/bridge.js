@@ -175,6 +175,9 @@ export function createFigmaBridge({ port, logger = console.error }) {
         requestId: pending.relayRequestId || requestId,
         result: message
       });
+      // Must still resolve to unblock figmaCommandQueue — without this the queue
+      // is permanently stuck after the first relay command completes.
+      pending.resolve(message);
       return;
     }
 
