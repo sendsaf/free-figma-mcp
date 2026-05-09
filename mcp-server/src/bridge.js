@@ -73,13 +73,48 @@ export function createFigmaBridge({ port, logger = console.error }) {
       ws.on("close", () => {
         brokerClient = null;
         rejectPendingBrokerRequests(new Error("Relay bridge disconnected."));
-        logger("[bridge] relay disconnected from owner");
+        logger("[bridge] relay disconnected from owner; will retry...");
+        scheduleRelayReconnect(1000);
       });
       ws.on("error", (err) => {
         if (!settled) reject(err);
         else logger(`[bridge] relay WebSocket error: ${err.message}`);
       });
     });
+  }
+
+  function scheduleRelayReconnect(delayMs) {
+    const maxDelay = 30_000;
+    setTimeout(() => {
+      logger(`[bridge] relay attempting reconnect to owner on :${port}`);
+      const ws = new WebSocket(`ws://localhost:${port}`);
+      let reconnected = false;
+
+      ws.on("open", () => {
+        reconnected = true;
+        brokerClient = ws;
+        ws.send(JSON.stringify({
+          type: "hello",
+          role: "mcp-client",
+          client: "figma-local-mcp",
+          pid: process.pid
+        }));
+        logger(`[bridge] relay reconnected to owner on :${port}`);
+      });
+
+      ws.on("message", handleBrokerMessage);
+      ws.on("close", () => {
+        brokerClient = null;
+        rejectPendingBrokerRequests(new Error("Relay bridge disconnected."));
+        logger("[bridge] relay disconnected from owner; will retry...");
+        scheduleRelayReconnect(Math.min(delayMs * 2, maxDelay));
+      });
+      ws.on("error", () => {
+        if (!reconnected) {
+          scheduleRelayReconnect(Math.min(delayMs * 2, maxDelay));
+        }
+      });
+    }, delayMs);
   }
 
   function handleBridgeConnection(ws) {
