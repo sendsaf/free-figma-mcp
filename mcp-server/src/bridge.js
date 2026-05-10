@@ -1,6 +1,7 @@
 import WebSocket, { WebSocketServer } from "ws";
 
 const WS_OPEN = 1;
+const HEARTBEAT_MS = 15_000;
 
 export function createFigmaBridge({ port, logger = console.error }) {
   let bridgeMode = "starting";
@@ -22,15 +23,40 @@ export function createFigmaBridge({ port, logger = console.error }) {
     return new Promise((resolve) => {
       let settled = false;
       const server = new WebSocketServer({ port });
+      let heartbeat = null;
 
       server.on("listening", () => {
         settled = true;
         bridgeMode = "owner";
         logger(`[bridge] owner mode: WebSocket listening on :${port}`);
+        heartbeat = setInterval(() => {
+          for (const ws of server.clients) {
+            if (ws.isAlive === false) {
+              logger(`[bridge] terminating stale ${ws.role || "unknown"} WebSocket client`);
+              if (figmaSocket === ws) {
+                figmaSocket = null;
+                rejectPendingFigmaRequests(new Error("Figma plugin connection went stale."));
+              }
+              ws.terminate();
+              continue;
+            }
+
+            ws.isAlive = false;
+            try {
+              ws.ping();
+            } catch {
+              ws.terminate();
+            }
+          }
+        }, HEARTBEAT_MS);
+        heartbeat.unref?.();
         resolve();
       });
 
       server.on("connection", handleBridgeConnection);
+      server.on("close", () => {
+        if (heartbeat) clearInterval(heartbeat);
+      });
 
       server.on("error", (err) => {
         if (!settled && err.code === "EADDRINUSE") {
@@ -119,8 +145,12 @@ export function createFigmaBridge({ port, logger = console.error }) {
 
   function handleBridgeConnection(ws) {
     ws.role = "unknown";
+    ws.isAlive = true;
     logger("[bridge] WebSocket client connected");
 
+    ws.on("pong", () => {
+      ws.isAlive = true;
+    });
     ws.on("message", (raw) => handleBridgeMessage(ws, raw));
     ws.on("close", () => {
       if (figmaSocket === ws) {
