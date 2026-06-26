@@ -204,6 +204,24 @@
       .collapsed .subtle {
         display: none;
       }
+      .mini-status {
+        display: none;
+        align-items: center;
+        gap: 5px;
+        font-size: 10px;
+        color: #8d93a5;
+        white-space: nowrap;
+      }
+      .mini-status .dot {
+        width: 7px;
+        height: 7px;
+      }
+      .collapsed .mini-status {
+        display: flex;
+      }
+      .collapsed h1 {
+        display: none;
+      }
     </style>
   </head>
   <body>
@@ -213,6 +231,10 @@
           <div>
             <h1>Figma Local MCP</h1>
             <div class="subtle">Bridge for IDE agents</div>
+          </div>
+          <div class="mini-status">
+            <div class="dot connecting" id="miniDot"></div>
+            <span id="miniStatus">Connecting</span>
           </div>
         </div>
         <div class="actions">
@@ -261,6 +283,8 @@
     <script>
       var statusEl = document.getElementById("status");
       var dotEl = document.getElementById("dot");
+      var miniDotEl = document.getElementById("miniDot");
+      var miniStatusEl = document.getElementById("miniStatus");
       var logEl = document.getElementById("log");
       var countEl = document.getElementById("commandCount");
       var lastCommandEl = document.getElementById("lastCommand");
@@ -295,6 +319,8 @@
         dotEl.className = "dot " + state;
         statusEl.textContent = text;
         lastSeenEl.textContent = new Date().toLocaleTimeString();
+        miniDotEl.className = "dot " + state;
+        miniStatusEl.textContent = state === "connected" ? "Connected" : state === "connecting" ? "Connecting" : "Disconnected";
       }
 
       function setActiveRequest(requestId, commandType) {

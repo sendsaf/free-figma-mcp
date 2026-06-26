@@ -3,7 +3,7 @@
     "figma-local-mcp": {
       "command": "node",
       "args": [
-        "PLACEHOLDER_SERVER_PATH"
+        "C:\\Users\\stylw\\Downloads\\figma-local-mcp\\mcp-server\\server.js"
       ],
       "env": {},
       "disabled": false,

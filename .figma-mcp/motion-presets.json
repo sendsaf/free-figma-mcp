@@ -1,0 +1,4316 @@
+{
+  "Burst": {
+    "name": "Burst",
+    "category": "enter",
+    "speed": "Fast",
+    "source": "figma-ui-bake",
+    "durationSec": 0.3,
+    "tracks": [
+      {
+        "property": "OPACITY",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.03,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "ROTATION",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 90
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.07,
+                "y1": 0.97,
+                "x2": 0.58,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.3,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.07,
+                "y1": 0.97,
+                "x2": 0.58,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_X",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0.8
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.07,
+                "y1": 0.97,
+                "x2": 0.58,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.3,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.07,
+                "y1": 0.97,
+                "x2": 0.58,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_Y",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0.8
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.07,
+                "y1": 0.97,
+                "x2": 0.58,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.3,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.07,
+                "y1": 0.97,
+                "x2": 0.58,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "TRANSLATION_Y",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 116
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.07,
+                "y1": 0.97,
+                "x2": 0.58,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.3,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.07,
+                "y1": 0.97,
+                "x2": 0.58,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Ignite": {
+    "name": "Ignite",
+    "category": "enter",
+    "speed": "Fast",
+    "source": "figma-ui-bake",
+    "durationSec": 0.3,
+    "tracks": [
+      {
+        "property": "OPACITY",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.08,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "ROTATION",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": -60
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.85,
+                "x2": 0.3,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.3,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.85,
+                "x2": 0.3,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_X",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.85,
+                "x2": 0.3,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.3,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.85,
+                "x2": 0.3,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_Y",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.85,
+                "x2": 0.3,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.3,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.85,
+                "x2": 0.3,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "TRANSLATION_Y",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 20
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.85,
+                "x2": 0.3,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.3,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.85,
+                "x2": 0.3,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Sweep": {
+    "name": "Sweep",
+    "category": "enter",
+    "speed": "Fast",
+    "source": "figma-ui-bake",
+    "durationSec": 0.3,
+    "tracks": [
+      {
+        "property": "OPACITY",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.08,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "TRANSLATION_X",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 120
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 1.7,
+                "x2": 0.3,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.3,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 1.7,
+                "x2": 0.3,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Slam": {
+    "name": "Slam",
+    "category": "enter",
+    "speed": "Fast",
+    "source": "figma-ui-bake",
+    "durationSec": 0.1,
+    "tracks": [
+      {
+        "property": "OPACITY",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.08,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_X",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.85,
+                "x2": 0.3,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.03,
+            "value": {
+              "type": "FLOAT",
+              "value": 1.2
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.85,
+                "x2": 0.3,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_Y",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.85,
+                "x2": 0.3,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.03,
+            "value": {
+              "type": "FLOAT",
+              "value": 0.8
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.85,
+                "x2": 0.3,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "TRANSLATION_Y",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": -120
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.58,
+                "y1": 0.26,
+                "x2": 1,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.1,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.58,
+                "y1": 0.26,
+                "x2": 1,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Descend": {
+    "name": "Descend",
+    "category": "enter",
+    "speed": "Medium",
+    "source": "figma-ui-bake",
+    "durationSec": 0.6,
+    "tracks": [
+      {
+        "property": "OPACITY",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.4,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "TRANSLATION_Y",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": -40
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.05,
+                "y1": 0.4,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.6,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.05,
+                "y1": 0.4,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Magnify": {
+    "name": "Magnify",
+    "category": "enter",
+    "speed": "Medium",
+    "source": "figma-ui-bake",
+    "durationSec": 0.9,
+    "tracks": [
+      {
+        "property": "SCALE_X",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.4,
+                "y1": 1.75,
+                "x2": 0.3,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.9,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.4,
+                "y1": 1.75,
+                "x2": 0.3,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_Y",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.4,
+                "y1": 1.75,
+                "x2": 0.3,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.9,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.4,
+                "y1": 1.75,
+                "x2": 0.3,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Glide": {
+    "name": "Glide",
+    "category": "enter",
+    "speed": "Medium",
+    "source": "figma-ui-bake",
+    "durationSec": 0.6,
+    "tracks": [
+      {
+        "property": "OPACITY",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.15,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "TRANSLATION_X",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": -120
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.05,
+                "y1": 0.4,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.6,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.05,
+                "y1": 0.4,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Drop": {
+    "name": "Drop",
+    "category": "enter",
+    "speed": "Medium",
+    "source": "figma-ui-bake",
+    "durationSec": 1.2,
+    "tracks": [
+      {
+        "property": "OPACITY",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.15,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "TRANSLATION_Y",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": -60
+            },
+            "easing": {
+              "type": "CUSTOM_SPRING",
+              "easingFunctionSpring": {
+                "bounce": 0.6536
+              }
+            }
+          },
+          {
+            "timelinePosition": 1.2,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_SPRING",
+              "easingFunctionSpring": {
+                "bounce": 0.6536
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Reveal": {
+    "name": "Reveal",
+    "category": "enter",
+    "speed": "Slow",
+    "source": "figma-ui-bake",
+    "durationSec": 1,
+    "tracks": [
+      {
+        "property": "OPACITY",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.09,
+                "y1": 0.55,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.4,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.09,
+                "y1": 0.55,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_X",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0.6
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.52,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.78,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.52,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_Y",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0.6
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.52,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.78,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.52,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "TRANSLATION_Y",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 20
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.3,
+                "y1": -1.2,
+                "x2": 0.45,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 1,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.3,
+                "y1": -1.2,
+                "x2": 0.45,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Rise": {
+    "name": "Rise",
+    "category": "enter",
+    "speed": "Slow",
+    "source": "figma-ui-bake",
+    "durationSec": 1,
+    "tracks": [
+      {
+        "property": "OPACITY",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.4,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "ROTATION",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": -60
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.05,
+                "y1": 0.4,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 1,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.05,
+                "y1": 0.4,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_X",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.05,
+                "y1": 0.4,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 1,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.05,
+                "y1": 0.4,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_Y",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.05,
+                "y1": 0.4,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 1,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.05,
+                "y1": 0.4,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "TRANSLATION_X",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 30
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.24,
+                "y1": 0.08,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 1,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.24,
+                "y1": 0.08,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Tip": {
+    "name": "Tip",
+    "category": "enter",
+    "speed": "Slow",
+    "source": "figma-ui-bake",
+    "durationSec": 1,
+    "tracks": [
+      {
+        "property": "OPACITY",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.4,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "ROTATION",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 20
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.05,
+                "y1": 0.4,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.9,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.05,
+                "y1": 0.4,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_X",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0.9
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.05,
+                "y1": 0.4,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.8,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.05,
+                "y1": 0.4,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_Y",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0.9
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.05,
+                "y1": 0.4,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.8,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.05,
+                "y1": 0.4,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "TRANSLATION_Y",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 10
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.05,
+                "y1": 0.4,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 1,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.05,
+                "y1": 0.4,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Feather": {
+    "name": "Feather",
+    "category": "enter",
+    "speed": "Slow",
+    "source": "figma-ui-bake",
+    "durationSec": 1,
+    "tracks": [
+      {
+        "property": "OPACITY",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.5,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "TRANSLATION_Y",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": -80
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.55,
+                "x2": 0.7,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 1,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.55,
+                "x2": 0.7,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Crank": {
+    "name": "Crank",
+    "category": "cycle",
+    "speed": "Fast",
+    "source": "figma-ui-bake",
+    "durationSec": 0.75,
+    "loop": true,
+    "tracks": [
+      {
+        "property": "ROTATION",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_SPRING",
+              "easingFunctionSpring": {
+                "bounce": 0.4024
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.75,
+            "value": {
+              "type": "FLOAT",
+              "value": -90
+            },
+            "easing": {
+              "type": "CUSTOM_SPRING",
+              "easingFunctionSpring": {
+                "bounce": 0.4024
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Press": {
+    "name": "Press",
+    "category": "cycle",
+    "speed": "Fast",
+    "source": "figma-ui-bake",
+    "durationSec": 0.05,
+    "loop": true,
+    "tracks": [
+      {
+        "property": "OPACITY",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.85,
+                "x2": 0.3,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.045,
+            "value": {
+              "type": "FLOAT",
+              "value": 0.5
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.85,
+                "x2": 0.3,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_X",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.85,
+                "x2": 0.3,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.05,
+            "value": {
+              "type": "FLOAT",
+              "value": 0.8
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.85,
+                "x2": 0.3,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_Y",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.85,
+                "x2": 0.3,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.05,
+            "value": {
+              "type": "FLOAT",
+              "value": 0.8
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.85,
+                "x2": 0.3,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Pop": {
+    "name": "Pop",
+    "category": "cycle",
+    "speed": "Fast",
+    "source": "figma-ui-bake",
+    "durationSec": 0.3,
+    "loop": true,
+    "tracks": [
+      {
+        "property": "SCALE_X",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.85,
+                "x2": 0.3,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.3,
+            "value": {
+              "type": "FLOAT",
+              "value": 1.2
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.85,
+                "x2": 0.3,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_Y",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.85,
+                "x2": 0.3,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.3,
+            "value": {
+              "type": "FLOAT",
+              "value": 1.2
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.85,
+                "x2": 0.3,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Scoot": {
+    "name": "Scoot",
+    "category": "cycle",
+    "speed": "Fast",
+    "source": "figma-ui-bake",
+    "durationSec": 0.22,
+    "loop": true,
+    "tracks": [
+      {
+        "property": "OPACITY",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.02,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "TRANSLATION_X",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": -130
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.95,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.22,
+            "value": {
+              "type": "FLOAT",
+              "value": -10
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.95,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Spin": {
+    "name": "Spin",
+    "category": "cycle",
+    "speed": "Medium",
+    "source": "figma-ui-bake",
+    "durationSec": 2,
+    "loop": true,
+    "tracks": [
+      {
+        "property": "ROTATION",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.1,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 2,
+            "value": {
+              "type": "FLOAT",
+              "value": -360
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.1,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Flip": {
+    "name": "Flip",
+    "category": "cycle",
+    "speed": "Medium",
+    "source": "figma-ui-bake",
+    "durationSec": 0.5,
+    "loop": true,
+    "tracks": [
+      {
+        "property": "ROTATION",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.5,
+            "value": {
+              "type": "FLOAT",
+              "value": 360
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "TRANSLATION_Y",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.1,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.115,
+            "value": {
+              "type": "FLOAT",
+              "value": 4
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.1,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Tick": {
+    "name": "Tick",
+    "category": "cycle",
+    "speed": "Medium",
+    "source": "figma-ui-bake",
+    "durationSec": 1,
+    "loop": true,
+    "tracks": [
+      {
+        "property": "ROTATION",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_SPRING",
+              "easingFunctionSpring": {
+                "bounce": 0.7924
+              }
+            }
+          },
+          {
+            "timelinePosition": 1,
+            "value": {
+              "type": "FLOAT",
+              "value": -6
+            },
+            "easing": {
+              "type": "CUSTOM_SPRING",
+              "easingFunctionSpring": {
+                "bounce": 0.7924
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Creep": {
+    "name": "Creep",
+    "category": "cycle",
+    "speed": "Medium",
+    "source": "figma-ui-bake",
+    "durationSec": 0.2,
+    "loop": true,
+    "tracks": [
+      {
+        "property": "SCALE_X",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.1,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.2,
+            "value": {
+              "type": "FLOAT",
+              "value": 1.2
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.1,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_Y",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.1,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.2,
+            "value": {
+              "type": "FLOAT",
+              "value": 1.2
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.1,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "TRANSLATION_X",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.1,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.2,
+            "value": {
+              "type": "FLOAT",
+              "value": 20
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.1,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Float": {
+    "name": "Float",
+    "category": "cycle",
+    "speed": "Slow",
+    "source": "figma-ui-bake",
+    "durationSec": 1.25,
+    "loop": true,
+    "tracks": [
+      {
+        "property": "TRANSLATION_X",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.61,
+                "y1": 1,
+                "x2": 0.88,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.416,
+            "value": {
+              "type": "FLOAT",
+              "value": -2
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.61,
+                "y1": 1,
+                "x2": 0.88,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "TRANSLATION_Y",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.37,
+                "y1": 0,
+                "x2": 0.63,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 1.25,
+            "value": {
+              "type": "FLOAT",
+              "value": -10
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.37,
+                "y1": 0,
+                "x2": 0.63,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Orbit": {
+    "name": "Orbit",
+    "category": "cycle",
+    "speed": "Slow",
+    "source": "figma-ui-bake",
+    "durationSec": 0.9,
+    "loop": true,
+    "tracks": [
+      {
+        "property": "OPACITY",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.2,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.7,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.2,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_X",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.2,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.9,
+            "value": {
+              "type": "FLOAT",
+              "value": 1.2
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.2,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_Y",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.2,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.9,
+            "value": {
+              "type": "FLOAT",
+              "value": 1.2
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.2,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Breathe": {
+    "name": "Breathe",
+    "category": "cycle",
+    "speed": "Slow",
+    "source": "figma-ui-bake",
+    "durationSec": 0.9,
+    "loop": true,
+    "tracks": [
+      {
+        "property": "OPACITY",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.2,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.7,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.2,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_X",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.2,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.9,
+            "value": {
+              "type": "FLOAT",
+              "value": 1.2
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.2,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_Y",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.2,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.9,
+            "value": {
+              "type": "FLOAT",
+              "value": 1.2
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.2,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Pulse": {
+    "name": "Pulse",
+    "category": "cycle",
+    "speed": "Slow",
+    "source": "figma-ui-bake",
+    "durationSec": 2.2,
+    "loop": true,
+    "tracks": [
+      {
+        "property": "OPACITY",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.3,
+                "y1": 0,
+                "x2": 0.45,
+                "y2": 0.65
+              }
+            }
+          },
+          {
+            "timelinePosition": 1.7,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.3,
+                "y1": 0,
+                "x2": 0.45,
+                "y2": 0.65
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_X",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.1,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 2.2,
+            "value": {
+              "type": "FLOAT",
+              "value": 2
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.1,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_Y",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.1,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 2.2,
+            "value": {
+              "type": "FLOAT",
+              "value": 2
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.1,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Launch": {
+    "name": "Launch",
+    "category": "exit",
+    "speed": "Fast",
+    "source": "figma-ui-bake",
+    "durationSec": 0.3,
+    "tracks": [
+      {
+        "property": "OPACITY",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.03,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "ROTATION",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.7,
+                "y1": 0,
+                "x2": 0.85,
+                "y2": 0.15
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.3,
+            "value": {
+              "type": "FLOAT",
+              "value": -90
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.7,
+                "y1": 0,
+                "x2": 0.85,
+                "y2": 0.15
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_X",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.7,
+                "y1": 0,
+                "x2": 0.85,
+                "y2": 0.15
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.3,
+            "value": {
+              "type": "FLOAT",
+              "value": 0.8
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.7,
+                "y1": 0,
+                "x2": 0.85,
+                "y2": 0.15
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_Y",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.7,
+                "y1": 0,
+                "x2": 0.85,
+                "y2": 0.15
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.3,
+            "value": {
+              "type": "FLOAT",
+              "value": 0.8
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.7,
+                "y1": 0,
+                "x2": 0.85,
+                "y2": 0.15
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "TRANSLATION_Y",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.7,
+                "y1": 0,
+                "x2": 0.85,
+                "y2": 0.15
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.3,
+            "value": {
+              "type": "FLOAT",
+              "value": -116
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.7,
+                "y1": 0,
+                "x2": 0.85,
+                "y2": 0.15
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Vanish": {
+    "name": "Vanish",
+    "category": "exit",
+    "speed": "Fast",
+    "source": "figma-ui-bake",
+    "durationSec": 0.3,
+    "tracks": [
+      {
+        "property": "OPACITY",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.25,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_X",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.7,
+                "y1": 0,
+                "x2": 0.85,
+                "y2": 0.15
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.3,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.7,
+                "y1": 0,
+                "x2": 0.85,
+                "y2": 0.15
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_Y",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.7,
+                "y1": 0,
+                "x2": 0.85,
+                "y2": 0.15
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.3,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.7,
+                "y1": 0,
+                "x2": 0.85,
+                "y2": 0.15
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "TRANSLATION_X",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.7,
+                "y1": 0,
+                "x2": 0.85,
+                "y2": 0.15
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.04,
+            "value": {
+              "type": "FLOAT",
+              "value": -5
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.7,
+                "y1": 0,
+                "x2": 0.85,
+                "y2": 0.15
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Flick": {
+    "name": "Flick",
+    "category": "exit",
+    "speed": "Fast",
+    "source": "figma-ui-bake",
+    "durationSec": 0.3,
+    "tracks": [
+      {
+        "property": "OPACITY",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.15,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "TRANSLATION_X",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.7,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": -0.7
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.3,
+            "value": {
+              "type": "FLOAT",
+              "value": 120
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.7,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": -0.7
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Swipe": {
+    "name": "Swipe",
+    "category": "exit",
+    "speed": "Fast",
+    "source": "figma-ui-bake",
+    "durationSec": 0.3,
+    "tracks": [
+      {
+        "property": "OPACITY",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.15,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_X",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.7,
+                "y1": 0,
+                "x2": 0.85,
+                "y2": 0.15
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.3,
+            "value": {
+              "type": "FLOAT",
+              "value": 0.6
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.7,
+                "y1": 0,
+                "x2": 0.85,
+                "y2": 0.15
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_Y",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.7,
+                "y1": 0,
+                "x2": 0.85,
+                "y2": 0.15
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.3,
+            "value": {
+              "type": "FLOAT",
+              "value": 0.6
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.7,
+                "y1": 0,
+                "x2": 0.85,
+                "y2": 0.15
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "TRANSLATION_X",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.7,
+                "y1": 0,
+                "x2": 0.85,
+                "y2": 0.15
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.3,
+            "value": {
+              "type": "FLOAT",
+              "value": -120
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.7,
+                "y1": 0,
+                "x2": 0.85,
+                "y2": 0.15
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Poof": {
+    "name": "Poof",
+    "category": "exit",
+    "speed": "Medium",
+    "source": "figma-ui-bake",
+    "durationSec": 0.6,
+    "tracks": [
+      {
+        "property": "OPACITY",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.85,
+                "x2": 0.3,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.45,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.85,
+                "x2": 0.3,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_X",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.85,
+                "x2": 0.3,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.6,
+            "value": {
+              "type": "FLOAT",
+              "value": 2.5
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.85,
+                "x2": 0.3,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_Y",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.85,
+                "x2": 0.3,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.6,
+            "value": {
+              "type": "FLOAT",
+              "value": 2.5
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.85,
+                "x2": 0.3,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Deflate": {
+    "name": "Deflate",
+    "category": "exit",
+    "speed": "Medium",
+    "source": "figma-ui-bake",
+    "durationSec": 0.6,
+    "tracks": [
+      {
+        "property": "OPACITY",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.7,
+                "y1": 0,
+                "x2": 0.85,
+                "y2": 0.15
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.5,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.7,
+                "y1": 0,
+                "x2": 0.85,
+                "y2": 0.15
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_X",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.7,
+                "y1": 0,
+                "x2": 0.85,
+                "y2": 0.15
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.6,
+            "value": {
+              "type": "FLOAT",
+              "value": 0.6
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.7,
+                "y1": 0,
+                "x2": 0.85,
+                "y2": 0.15
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_Y",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.7,
+                "y1": 0,
+                "x2": 0.85,
+                "y2": 0.15
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.6,
+            "value": {
+              "type": "FLOAT",
+              "value": 0.6
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.7,
+                "y1": 0,
+                "x2": 0.85,
+                "y2": 0.15
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Fling": {
+    "name": "Fling",
+    "category": "exit",
+    "speed": "Medium",
+    "source": "figma-ui-bake",
+    "durationSec": 0.6,
+    "tracks": [
+      {
+        "property": "OPACITY",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.95,
+                "y2": 0.6
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.3,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.95,
+                "y2": 0.6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "ROTATION",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.7,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": -0.7
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.6,
+            "value": {
+              "type": "FLOAT",
+              "value": 180
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.7,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": -0.7
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "TRANSLATION_X",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.6,
+                "y1": 0,
+                "x2": 0.7,
+                "y2": -0.5
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.6,
+            "value": {
+              "type": "FLOAT",
+              "value": -60
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.6,
+                "y1": 0,
+                "x2": 0.7,
+                "y2": -0.5
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Splat": {
+    "name": "Splat",
+    "category": "exit",
+    "speed": "Medium",
+    "source": "figma-ui-bake",
+    "durationSec": 0.3,
+    "tracks": [
+      {
+        "property": "OPACITY",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.95,
+                "y2": 0.6
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.08,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.95,
+                "y2": 0.6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_X",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.85,
+                "x2": 0.3,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.1,
+            "value": {
+              "type": "FLOAT",
+              "value": 1.75
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.85,
+                "x2": 0.3,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_Y",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1.2
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.85,
+                "x2": 0.3,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.1,
+            "value": {
+              "type": "FLOAT",
+              "value": 0.05
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.15,
+                "y1": 0.85,
+                "x2": 0.3,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "TRANSLATION_Y",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.7,
+                "y1": 0,
+                "x2": 0.85,
+                "y2": 0.15
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.3,
+            "value": {
+              "type": "FLOAT",
+              "value": 70
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.7,
+                "y1": 0,
+                "x2": 0.85,
+                "y2": 0.15
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Evaporate": {
+    "name": "Evaporate",
+    "category": "exit",
+    "speed": "Slow",
+    "source": "figma-ui-bake",
+    "durationSec": 1.5,
+    "tracks": [
+      {
+        "property": "OPACITY",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.6,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 0.9
+              }
+            }
+          },
+          {
+            "timelinePosition": 1.5,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.6,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 0.9
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_X",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.95,
+                "y2": 0.6
+              }
+            }
+          },
+          {
+            "timelinePosition": 1.5,
+            "value": {
+              "type": "FLOAT",
+              "value": 1.5
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.95,
+                "y2": 0.6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_Y",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.95,
+                "y2": 0.6
+              }
+            }
+          },
+          {
+            "timelinePosition": 1.5,
+            "value": {
+              "type": "FLOAT",
+              "value": 1.5
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.95,
+                "y2": 0.6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "TRANSLATION_Y",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.95,
+                "y2": 0.6
+              }
+            }
+          },
+          {
+            "timelinePosition": 1.5,
+            "value": {
+              "type": "FLOAT",
+              "value": -40
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.95,
+                "y2": 0.6
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Recede": {
+    "name": "Recede",
+    "category": "exit",
+    "speed": "Slow",
+    "source": "figma-ui-bake",
+    "durationSec": 1.5,
+    "tracks": [
+      {
+        "property": "OPACITY",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.6,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 0.9
+              }
+            }
+          },
+          {
+            "timelinePosition": 1.25,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.6,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 0.9
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_X",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.95,
+                "y2": 0.6
+              }
+            }
+          },
+          {
+            "timelinePosition": 1.5,
+            "value": {
+              "type": "FLOAT",
+              "value": 0.8
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.95,
+                "y2": 0.6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_Y",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.95,
+                "y2": 0.6
+              }
+            }
+          },
+          {
+            "timelinePosition": 1.5,
+            "value": {
+              "type": "FLOAT",
+              "value": 0.8
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.95,
+                "y2": 0.6
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Sink": {
+    "name": "Sink",
+    "category": "exit",
+    "speed": "Slow",
+    "source": "figma-ui-bake",
+    "durationSec": 1.5,
+    "tracks": [
+      {
+        "property": "OPACITY",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.6,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 0.9
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.75,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.6,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 0.9
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_X",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.7,
+                "y2": 0.7
+              }
+            }
+          },
+          {
+            "timelinePosition": 1.05,
+            "value": {
+              "type": "FLOAT",
+              "value": 0.8
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.7,
+                "y2": 0.7
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "SCALE_Y",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.7,
+                "y2": 0.7
+              }
+            }
+          },
+          {
+            "timelinePosition": 1.05,
+            "value": {
+              "type": "FLOAT",
+              "value": 0.8
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.7,
+                "y2": 0.7
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "TRANSLATION_Y",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.7,
+                "y2": 0.7
+              }
+            }
+          },
+          {
+            "timelinePosition": 1.5,
+            "value": {
+              "type": "FLOAT",
+              "value": 60
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.7,
+                "y2": 0.7
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Tumble": {
+    "name": "Tumble",
+    "category": "exit",
+    "speed": "Slow",
+    "source": "figma-ui-bake",
+    "durationSec": 1.5,
+    "tracks": [
+      {
+        "property": "OPACITY",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          },
+          {
+            "timelinePosition": 0.41,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.5,
+                "y2": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "ROTATION",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.95,
+                "y2": 0.6
+              }
+            }
+          },
+          {
+            "timelinePosition": 1.5,
+            "value": {
+              "type": "FLOAT",
+              "value": -180
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.95,
+                "y2": 0.6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "property": "TRANSLATION_X",
+        "keyframes": [
+          {
+            "timelinePosition": 0,
+            "value": {
+              "type": "FLOAT",
+              "value": 0
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.95,
+                "y2": 0.6
+              }
+            }
+          },
+          {
+            "timelinePosition": 1.5,
+            "value": {
+              "type": "FLOAT",
+              "value": 120
+            },
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.5,
+                "y1": 0,
+                "x2": 0.95,
+                "y2": 0.6
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

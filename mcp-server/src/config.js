@@ -8,3 +8,7 @@ export const serverRoot = path.resolve(srcDir, "..");
 export const projectRoot = path.resolve(serverRoot, "..");
 export const localDataDir = path.join(projectRoot, ".figma-mcp");
 export const mappingsPath = path.join(localDataDir, "code-connect-mappings.json");
+export const apiCatalogPath = path.join(localDataDir, "api-catalog.json");
+export const motionPresetsPath = path.join(localDataDir, "motion-presets.json");
+export const skillsDir = path.join(projectRoot, "skills");
+export const steeringDir = path.join(projectRoot, "powers", "local-figma", "steering");
