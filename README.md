@@ -1,10 +1,10 @@
-![Figma Local MCP](./assets/local-figma-mcp.png)
+![Free Figma MCP](./assets/local-figma-mcp.png)
 
-# Figma Local MCP
+# Free Figma MCP
 
 Run Figma through your own local MCP server.
 
-Figma Local MCP gives any MCP-capable IDE, CLI, or agent a direct local bridge into Figma Desktop. It exposes official-style Figma MCP tool names, but routes the work through your active local Figma file instead of depending on a hosted remote MCP session.
+Free Figma MCP gives any MCP-capable IDE, CLI, or agent a direct local bridge into Figma Desktop. It exposes official-style Figma MCP tool names, but routes the work through your active local Figma file instead of depending on a hosted remote MCP session.
 
 No Claude Code lock-in. No single-IDE dependency. No remote Figma MCP quota wall for local desktop workflows. Your agent talks to your local MCP server, your local MCP server talks to your Figma plugin, and Figma updates the real canvas.
 
@@ -20,11 +20,11 @@ Official remote MCP is useful, but local Figma work needs a different tool:
 - You want to avoid hosted MCP rate limits for local plugin-backed work.
 - You want a bridge you can inspect, extend, fork, test, and run without waiting on a vendor integration.
 
-Figma Local MCP is that bridge.
+Free Figma MCP is that bridge.
 
 ## What Makes It Stand Out
 
-| Capability                                   | Figma Local MCP                                                  |
+| Capability                                   | Free Figma MCP                                                   |
 | -------------------------------------------- | ---------------------------------------------------------------- |
 | Works with any MCP client                    | Yes. IDEs, CLIs, and agents that support MCP can use it.         |
 | Requires Claude Code                         | No. Claude Code can use it, but it is not required.              |
@@ -74,7 +74,47 @@ Any MCP-capable IDE / CLI / agent
 
 The local bridge is multi-client aware. If two IDEs start the MCP server, the first process owns the WebSocket bridge and the later processes relay through it instead of crashing on port `3055`.
 
-## Installation
+## Quick Setup (Interactive CLI)
+
+The fastest way to wire up an IDE and install the Figma plugin is the guided setup.
+
+From a cloned repo:
+
+```bash
+npm install
+npm run setup
+```
+
+Or without cloning, straight from npm (after the package is published):
+
+```bash
+npx -y -p free-figma-mcp free-figma-mcp-init
+```
+
+The interactive setup can:
+
+- write the MCP server config for your chosen client (Claude Desktop, Claude Code, Cursor, VS Code, Windsurf, Codex CLI, Kiro, Qoder),
+- install the skills/rules into that client (skills vs rules, project or global scope), 
+- copy the Figma plugin files (defaults to your **Downloads** folder, or a path you pick / the current dir), and
+- print the exact `Plugins -> Development -> Import plugin from manifest` steps.
+
+Headless flags are also supported, for example:
+
+```bash
+node mcp-server/cli.js --client cursor             # configure Cursor only
+node mcp-server/cli.js --client claude-code --skills --scope global  # install Agent Skills, user-global
+node mcp-server/cli.js --client codex --rules      # install guidance as Codex rules (AGENTS.md)
+node mcp-server/cli.js --plugin ./my-plugin        # install the plugin files
+node mcp-server/cli.js --print                     # just print the mcpServers JSON
+node mcp-server/cli.js --npx                        # configure to run via npx free-figma-mcp
+```
+
+Clients supported: Claude Desktop, Claude Code, Cursor, VS Code, Windsurf, Codex CLI, Kiro.
+See [docs/CLIENT_SETUP.md](docs/CLIENT_SETUP.md) for the full per-client config and guidance matrix.
+
+Prefer to wire things up by hand? Follow the manual steps below.
+
+## Manual Installation
 
 Use this setup for any MCP-capable IDE, CLI, or agent that accepts a standard `mcpServers` config.
 
@@ -95,9 +135,9 @@ Paste the generated JSON into your IDE's MCP config:
 ```json
 {
   "mcpServers": {
-    "figma-local-mcp": {
+    "free-figma-mcp": {
       "command": "node",
-      "args": ["/absolute/path/to/figma-local-mcp/mcp-server/server.js"],
+      "args": ["/absolute/path/to/free-figma-mcp/mcp-server/server.js"],
       "env": {}
     }
   }
@@ -119,7 +159,7 @@ You can also start from these files:
 **4. Start a Figma session**
 
 1. Start your IDE or CLI MCP client.
-2. In Figma Desktop, run `Plugins -> Development -> Figma Local MCP Bridge`.
+2. In Figma Desktop, run `Plugins -> Development -> Free Figma MCP Bridge`.
 3. Press `Start` in the plugin window.
 4. Open or create a Figma draft.
 5. Ask your agent to call `get_metadata`, `get_design_context`, or `use_figma`.
@@ -129,16 +169,16 @@ You can also start from these files:
 Start with a small smoke test after the plugin says it is connected:
 
 ```text
-Use Figma Local MCP to get metadata for my current Figma file or selection.
+Use Free Figma MCP to get metadata for my current Figma file or selection.
 ```
 
 Then use this from a blank Figma draft to verify the full local write flow:
 
 ```text
-Use Figma Local MCP to build a polished SaaS analytics dashboard in my currently open blank Figma draft.
+Use Free Figma MCP to build a polished SaaS analytics dashboard in my currently open blank Figma draft.
 
 Requirements:
-- Use the active Figma file and create everything locally through the Figma Local MCP tools.
+- Use the active Figma file and create everything locally through the Free Figma MCP tools.
 - Create one desktop frame named "Local MCP Analytics Dashboard" at 1440 x 1024.
 - Design a realistic product dashboard for a fictional usage analytics tool called "SignalBoard".
 - Include a left navigation rail, top command bar, KPI cards, a line chart area, a usage breakdown section, recent activity, and a compact settings panel.
@@ -151,11 +191,11 @@ Requirements:
 Good follow-up prompts:
 
 ```text
-Use Figma Local MCP to tighten spacing, align the dashboard sections, and improve visual hierarchy.
+Use Free Figma MCP to tighten spacing, align the dashboard sections, and improve visual hierarchy.
 ```
 
 ```text
-Use Figma Local MCP to add a small onboarding callout and a selected state in the left navigation.
+Use Free Figma MCP to add a small onboarding callout and a selected state in the left navigation.
 ```
 
 ## Antigravity Setup
@@ -234,7 +274,7 @@ Kiro power:
 
 ## Local vs Remote Figma MCP
 
-| Remote Figma MCP                     | Figma Local MCP                                    |
+| Remote Figma MCP                     | Free Figma MCP                                     |
 | ------------------------------------ | -------------------------------------------------- |
 | Hosted by Figma                      | Runs on your machine                               |
 | Works from Figma cloud context       | Works from active Figma Desktop file               |
@@ -261,6 +301,7 @@ Repository shape:
 ```text
 mcp-server/
   server.js              # stable MCP entrypoint
+  cli.js                 # interactive setup CLI
   src/                   # bridge, tools, content helpers, storage
   test/                  # Node test runner tests
 figma-plugin/

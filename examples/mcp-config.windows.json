@@ -1,9 +1,9 @@
 {
   "mcpServers": {
-    "figma-local-mcp": {
+    "free-figma-mcp": {
       "command": "node",
       "args": [
-        "C:\\path\\to\\figma-local-mcp\\mcp-server\\server.js"
+        "C:\\Users\\stylw\\Downloads\\free-figma-mcp\\mcp-server\\server.js"
       ],
       "env": {}
     }

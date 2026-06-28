@@ -1,18 +1,28 @@
 {
-  "name": "figma-local-mcp",
+  "name": "free-figma-mcp-workspace",
   "private": true,
-  "description": "Local Figma Desktop MCP bridge with official-style Figma MCP tools.",
+  "description": "Free Figma MCP: a local Figma Desktop MCP bridge with official-style Figma MCP tools.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sendsaf/free-figma-mcp.git"
+  },
+  "homepage": "https://github.com/sendsaf/free-figma-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/sendsaf/free-figma-mcp/issues"
+  },
   "workspaces": [
     "mcp-server"
   ],
   "scripts": {
-    "start": "npm --workspace figma-local-mcp-server start",
-    "dev": "npm --workspace figma-local-mcp-server run dev",
+    "start": "npm --workspace free-figma-mcp start",
+    "dev": "npm --workspace free-figma-mcp run dev",
+    "setup": "node mcp-server/cli.js",
     "mcp:config": "node scripts/print-mcp-config.js",
     "mcp:config:kiro": "node scripts/print-mcp-config.js --kiro",
-    "check": "npm --workspace figma-local-mcp-server run check",
+    "mcp:config:antigravity": "node scripts/print-mcp-config.js",
+    "check": "npm --workspace free-figma-mcp run check",
     "check:plugin": "node --check figma-plugin/code.js",
-    "test": "npm --workspace figma-local-mcp-server test",
+    "test": "npm --workspace free-figma-mcp test",
     "validate": "npm run check && npm run check:plugin && npm test"
   },
   "engines": {

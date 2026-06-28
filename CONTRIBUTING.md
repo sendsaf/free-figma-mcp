@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for improving Figma Local MCP.
+Thanks for improving Free Figma MCP.
 
 ## Development Setup
 

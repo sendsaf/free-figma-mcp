@@ -88,7 +88,7 @@ export function createFigmaBridge({ port, logger = console.error }) {
         ws.send(JSON.stringify({
           type: "hello",
           role: "mcp-client",
-          client: "figma-local-mcp",
+          client: "free-figma-mcp",
           pid: process.pid
         }));
         logger(`[bridge] relay mode connected to owner on :${port}`);
@@ -122,7 +122,7 @@ export function createFigmaBridge({ port, logger = console.error }) {
         ws.send(JSON.stringify({
           type: "hello",
           role: "mcp-client",
-          client: "figma-local-mcp",
+          client: "free-figma-mcp",
           pid: process.pid
         }));
         logger(`[bridge] relay reconnected to owner on :${port}`);
@@ -322,7 +322,7 @@ export function createFigmaBridge({ port, logger = console.error }) {
       if (!figmaSocket || figmaSocket.readyState !== WS_OPEN) {
         return reject(new Error(
           "Figma plugin is not connected. " +
-          "Open Figma Desktop, run Plugins -> Development -> Figma Local MCP Bridge, then press Start."
+          "Open Figma Desktop, run Plugins -> Development -> Free Figma MCP Bridge, then press Start."
         ));
       }
 
@@ -343,7 +343,7 @@ export function createFigmaBridge({ port, logger = console.error }) {
     return new Promise((resolve, reject) => {
       if (!brokerClient || brokerClient.readyState !== WS_OPEN) {
         return reject(new Error(
-          `Figma Local MCP is in relay mode, but the owner bridge on :${port} is not connected.`
+          `Free Figma MCP is in relay mode, but the owner bridge on :${port} is not connected.`
         ));
       }
 

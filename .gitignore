@@ -2,7 +2,13 @@ node_modules/
 mcp-server/node_modules/
 .figma-mcp/
 .kiro/settings/mcp.json
-docs/
+
+# Staged at publish time by mcp-server prepack (bundle-assets.js); never committed.
+mcp-server/skills/
+mcp-server/figma-plugin/
+mcp-server/powers/
+mcp-server/data/
+*.tgz
 
 *.log
 npm-debug.log*

@@ -1,0 +1,44 @@
+name: Publish
+
+# Publishes the free-figma-mcp package to npm so it can be run with
+# `npx free-figma-mcp`. Triggers when a GitHub Release is published, or
+# manually via the Actions tab.
+#
+# Requires a repository secret named NPM_TOKEN (an npm automation token with
+# publish rights). Add it under Settings -> Secrets and variables -> Actions.
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  publish:
+    name: Publish to npm
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # enables npm provenance
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: "https://registry.npmjs.org"
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate
+        run: npm run validate
+
+      - name: Publish package
+        run: npm publish --workspace free-figma-mcp --access public --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

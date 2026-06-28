@@ -1,10 +1,10 @@
 // =============================================================================
-// Figma Local MCP Bridge — Plugin Sandbox (code.js)
+// Free Figma MCP Bridge — Plugin Sandbox (code.js)
 // Receives commands from ui.html (which relays from the MCP WebSocket server)
 // and executes them via the Figma Plugin API.
 // =============================================================================
 
-figma.showUI(__html__, { width: 340, height: 380, title: "Figma Local MCP" });
+figma.showUI(__html__, { width: 340, height: 380, title: "Free Figma MCP" });
 
 var activeRequestId = null;
 var stoppedRequests = {};
@@ -144,6 +144,127 @@ figma.ui.onmessage = async (msg) => {
         if (msg.requestId) {
           stoppedRequests[msg.requestId] = true;
         }
+        break;
+      }
+
+      // -----------------------------------------------------------------------
+      case "get_capabilities": {
+        respond({
+          ok: true,
+          source: "local-plugin",
+          apiVersion: ("apiVersion" in figma) ? figma.apiVersion : null,
+          editorType: figma.editorType,
+          capabilities: detectCapabilities(),
+          probedAt: Date.now()
+        });
+        break;
+      }
+
+      // -----------------------------------------------------------------------
+      case "introspect_api": {
+        respond({ ok: true, source: "local-plugin", introspection: introspectApi() });
+        break;
+      }
+
+      // -----------------------------------------------------------------------
+      case "probe_schema": {
+        respond(probeSchema(msg.spec || msg));
+        break;
+      }
+
+      // -----------------------------------------------------------------------
+      case "get_motion_context": {
+        var motionNodes = await getTargetNodes(msg);
+        var motionNode = null;
+        for (var mi = 0; mi < motionNodes.length; mi++) {
+          if (motionNodes[mi].type !== "PAGE") { motionNode = motionNodes[mi]; break; }
+        }
+        if (!motionNode) motionNode = motionNodes[0];
+        respond({ ok: true, source: "local-plugin", motion: getMotionContext(motionNode) });
+        break;
+      }
+
+      // -----------------------------------------------------------------------
+      case "get_slot_context": {
+        var slotNodes = await getTargetNodes(msg);
+        var slotNode = null;
+        for (var si = 0; si < slotNodes.length; si++) {
+          if (slotNodes[si].type !== "PAGE") { slotNode = slotNodes[si]; break; }
+        }
+        if (!slotNode) slotNode = slotNodes[0];
+        respond({ ok: true, source: "local-plugin", slotContext: getSlotContext(slotNode) });
+        break;
+      }
+
+      // -----------------------------------------------------------------------
+      case "set_slot_content": {
+        respond(await setSlotContent(msg));
+        break;
+      }
+
+      // -----------------------------------------------------------------------
+      case "get_shader_context": {
+        var shaderNodes = await getTargetNodes(msg);
+        var shaderNode = null;
+        for (var shi = 0; shi < shaderNodes.length; shi++) {
+          if (shaderNodes[shi].type !== "PAGE") { shaderNode = shaderNodes[shi]; break; }
+        }
+        if (!shaderNode) shaderNode = shaderNodes[0];
+        var shaderCtx = getShaderContext(shaderNode);
+        try {
+          var avail = await figma.listAvailableShaders();
+          shaderCtx.availableShaders = Array.isArray(avail) ? JSON.parse(JSON.stringify(avail)) : [];
+        } catch (e) {
+          shaderCtx.warnings.push("listAvailableShaders failed: " + e.message);
+        }
+        shaderCtx.supported = true;
+        if (!shaderCtx.shaderFills.length && !shaderCtx.availableShaders.length) {
+          shaderCtx.degraded = true;
+          shaderCtx.warnings.push("No SHADER fills on node and no shaders available in file. Shaders are paints of type 'SHADER' referencing a shader id; GLSL source is not exposed by the Plugin API.");
+        }
+        respond({ ok: true, source: "local-plugin", shaderContext: shaderCtx });
+        break;
+      }
+
+      // -----------------------------------------------------------------------
+      case "bake_preset": {
+        var bakeNodes = await getTargetNodes(msg);
+        var bakeNode = null;
+        for (var bi = 0; bi < bakeNodes.length; bi++) {
+          if (bakeNodes[bi].type !== "PAGE") { bakeNode = bakeNodes[bi]; break; }
+        }
+        if (!bakeNode) bakeNode = bakeNodes[0];
+        respond({ ok: true, source: "local-plugin", capture: getResolvedAnimations(bakeNode) });
+        break;
+      }
+
+      // -----------------------------------------------------------------------
+      case "apply_motion": {
+        var amNode = msg.nodeId ? await getNodeByIdCompat(msg.nodeId) : (figma.currentPage.selection[0] || null);
+        if (!amNode) { respond({ ok: false, error: "No target node (provide nodeId or select a node)." }); break; }
+        var amResult = applyMotionTracks(amNode, msg.payloads || []);
+        // Honor loop intent (cycle presets only make sense looping).
+        if (typeof msg.loop === "boolean") {
+          try {
+            var ps = amNode.playbackSettings || {};
+            amNode.playbackSettings = { autoplay: ps.autoplay !== false, loop: msg.loop, muted: !!ps.muted };
+          } catch (e) {
+            amResult.errors.push({ field: "playbackSettings.loop", error: String(e.message || e) });
+          }
+        }
+        respond({ ok: amResult.errors.length === 0, source: "local-plugin", nodeId: amNode.id, applied: amResult.applied, errors: amResult.errors, loop: msg.loop, mutatedNodeIds: [amNode.id] });
+        break;
+      }
+
+      // -----------------------------------------------------------------------
+      case "replicate_scene": {
+        respond(await replicateScene(msg.plan));
+        break;
+      }
+
+      // -----------------------------------------------------------------------
+      case "text_typewriter": {
+        respond(await textTypewriter(msg));
         break;
       }
 
@@ -295,7 +416,7 @@ figma.ui.onmessage = async (msg) => {
       // -----------------------------------------------------------------------
       case "create_new_file": {
         const page = figma.createPage();
-        page.name = msg.fileName || "New Figma Local MCP page";
+        page.name = msg.fileName || "New Free Figma MCP page";
         await figma.setCurrentPageAsync(page);
         respond({
           ok: true,
@@ -423,13 +544,537 @@ function respond(payload) {
   figma.ui.postMessage(message);
 }
 
-function isRequestStopped(requestId) {
-  return !!(requestId && stoppedRequests[requestId]);
+// Wraps a probe so a missing or throwing Plugin API surface yields `false`
+// instead of crashing capability detection.
+function probe(fn) {
+  try {
+    return !!fn();
+  } catch (e) {
+    return false;
+  }
 }
 
-function throwIfRequestStopped(requestId) {
+// Detects which Config 2026 Plugin API surfaces exist in the connected build.
+// Pure read: creates one throwaway frame to inspect node-level properties, then
+// removes it. Every leaf is a strict boolean; never throws.
+function detectCapabilities() {
+  var sample = null;
+  try {
+    sample = figma.createFrame();
+  } catch (e) {
+    sample = null;
+  }
+
+  var caps = {
+    motion: {
+      // Confirmed live in Config 2026 builds: prototype reactions + the Motion API.
+      reactions:       probe(function () { return sample && "reactions" in sample; }),
+      animationStyles: probe(function () { return sample && typeof sample.applyAnimationStyle === "function"; }),
+      manualKeyframes: probe(function () { return sample && typeof sample.applyManualKeyframeTrack === "function"; }),
+      presets:         probe(function () { return figma.motion && typeof figma.motion.figmaAnimationStyles === "function"; })
+    },
+    shaders: {
+      list:   probe(function () { return typeof figma.listAvailableShaders === "function"; }),
+      import: probe(function () { return typeof figma.importShaderById === "function"; })
+    },
+    codeLayers: {
+      // No native code-layer node type in the Plugin API; JSX->node is the closest primitive.
+      jsx: probe(function () { return typeof figma.createNodeFromJSXAsync === "function"; })
+    },
+    slots: {
+      // Slots live on COMPONENT nodes (component.createSlot), not on the figma global.
+      create: probe(function () {
+        var c = null, ok = false;
+        try { c = figma.createComponent(); ok = typeof c.createSlot === "function"; } catch (e) { ok = false; }
+        if (c) { try { c.remove(); } catch (e) {} }
+        return ok;
+      })
+    },
+    weave: {
+      read: probe(function () { return typeof figma.weave !== "undefined"; })
+    }
+  };
+
+  if (sample) {
+    try { sample.remove(); } catch (e) {}
+  }
+  return caps;
+}
+
+// Deep recon of the live Plugin API surface. Enumerates the figma global, probes
+// candidate Config 2026 factory functions, and reports which node properties
+// actually exist on a sample of each major node type. Bounded + side-effect-free
+// (created sample nodes are removed). This is how we discover newly-shipped /
+// undocumented APIs instead of guessing their names.
+function describeValue(obj, key) {
+  var entry = { name: key };
+  try {
+    entry.type = typeof obj[key];
+  } catch (e) {
+    entry.type = "error";
+    return entry;
+  }
+  if (entry.type === "function") {
+    try { entry.arity = obj[key].length; } catch (e) {}
+  }
+  return entry;
+}
+
+function enumerateKeys(obj) {
+  var names = {};
+  try { Object.keys(obj).forEach(function (k) { names[k] = true; }); } catch (e) {}
+  try { Object.getOwnPropertyNames(obj).forEach(function (k) { names[k] = true; }); } catch (e) {}
+  try { for (var k in obj) { names[k] = true; } } catch (e) {}
+  return Object.keys(names).sort();
+}
+
+var CANDIDATE_FIGMA_MEMBERS = [
+  "createFrame", "createRectangle", "createComponent", "createComponentFromNode",
+  "createSlot", "createCodeLayer", "createShaderPaint", "createShaderEffect",
+  "createMotion", "createKeyframe", "createAnimation", "createTimeline",
+  "createNodeFromSvg", "createNodeFromJSXAsync", "createGif", "createVideoAsync",
+  "weave", "codeLayers", "motion", "shaders", "ai", "agent", "skills"
+];
+
+var CANDIDATE_NODE_PROPS = [
+  "reactions", "motion", "timeline", "keyframes", "animations",
+  "transitionNode", "transitionDuration", "transitionEasing",
+  "fills", "strokes", "effects", "shaderPaint", "shader",
+  "codeLayer", "codeSource", "code", "language",
+  "slot", "slotName", "isSlot", "slots",
+  "componentPropertyDefinitions", "children"
+];
+
+function probeMembers(obj, candidates) {
+  return candidates.map(function (name) {
+    var present = false;
+    var type = "absent";
+    try {
+      type = typeof obj[name];
+      present = type !== "undefined";
+    } catch (e) {
+      type = "error";
+    }
+    var entry = { name: name, present: present, type: type };
+    if (present && type === "function") {
+      try { entry.arity = obj[name].length; } catch (e) {}
+    }
+    return entry;
+  });
+}
+
+function introspectApi() {
+  var globalKeys = enumerateKeys(figma).map(function (k) { return describeValue(figma, k); });
+  var candidateFactories = probeMembers(figma, CANDIDATE_FIGMA_MEMBERS);
+
+  // Deep map: full member list for each safe-to-create node type.
+  var SAFE_NODE_FACTORIES = [
+    "createFrame", "createRectangle", "createEllipse", "createText", "createComponent",
+    "createLine", "createVector", "createSection", "createStar", "createPolygon"
+  ];
+  var nodeTypes = {};
+  for (var i = 0; i < SAFE_NODE_FACTORIES.length; i++) {
+    var fnName = SAFE_NODE_FACTORIES[i];
+    try {
+      var node = figma[fnName]();
+      var seen = {};
+      var proto = node;
+      while (proto) {
+        Object.getOwnPropertyNames(proto).forEach(function (k) { seen[k] = true; });
+        proto = Object.getPrototypeOf(proto);
+      }
+      nodeTypes[node.type] = Object.keys(seen).sort();
+      try { node.remove(); } catch (e) {}
+    } catch (e) {
+      nodeTypes[fnName] = "err:" + e.message;
+    }
+  }
+
+  return {
+    apiVersion: ("apiVersion" in figma) ? figma.apiVersion : null,
+    editorType: figma.editorType,
+    globalKeys: globalKeys,
+    candidateFactories: candidateFactories,
+    nodeTypes: nodeTypes,
+    probedAt: Date.now()
+  };
+}
+
+// Methods that must never be auto-invoked during schema probing because they
+// mutate global state, navigate, or tear down the session.
+var SCHEMA_PROBE_DENYLIST = {
+  closePlugin: true, setCurrentPageAsync: true, saveVersionHistoryAsync: true,
+  triggerUndo: true, commitUndo: true, openExternal: true, showUI: true,
+  loadAllPagesAsync: true, createPage: true, createPageDivider: true
+};
+
+// Controlled error-leak: deliberately call a target method with an invalid
+// argument so the API's validation error reveals its schema. Returns the raw
+// error string (decoded server-side by schema-probe.js). Never calls denylisted
+// methods; node probes use a throwaway node that is removed afterward.
+function probeSchema(spec) {
+  spec = spec || {};
+  var method = spec.method;
+  if (!method) return { ok: false, error: "probe_schema requires a 'method' name." };
+  if (SCHEMA_PROBE_DENYLIST[method]) return { ok: false, error: "Method '" + method + "' is denylisted for probing." };
+
+  var invalidArgs = Array.isArray(spec.invalidArgs) ? spec.invalidArgs : [{ __invalid__: true }];
+  var target = null;
+  var disposable = null;
+
+  if (spec.on === "node") {
+    var factory = spec.nodeFactory || "createFrame";
+    if (SCHEMA_PROBE_DENYLIST[factory]) return { ok: false, error: "Factory '" + factory + "' is denylisted." };
+    try { disposable = figma[factory](); target = disposable; }
+    catch (e) { return { ok: false, error: "Could not create probe node: " + e.message }; }
+  } else {
+    target = figma;
+  }
+
+  var result;
+  try {
+    if (typeof target[method] !== "function") {
+      result = { ok: false, error: "'" + method + "' is not a function on " + (spec.on === "node" ? "node" : "figma") + "." };
+    } else {
+      var ret = target[method].apply(target, invalidArgs);
+      // If it did not throw, capture a short description of what came back.
+      result = { ok: true, threw: false, method: method, returned: typeof ret };
+    }
+  } catch (err) {
+    result = { ok: true, threw: true, method: method, errorString: String(err && err.message ? err.message : err) };
+  }
+
+  if (disposable) { try { disposable.remove(); } catch (e) {} }
+  return result;
+}
+
+// Reads a node's motion into a serializable MotionContext: applied preset
+// styles, manual keyframe tracks, derived timeline duration, and (as a
+// fallback) prototype reactions. Matches the shape consumed by the server-side
+// emitMotionCode generator.
+function getMotionContext(node) {
+  var ctx = {
+    nodeId: node.id, supported: false, degraded: false, source: "none",
+    presetStyles: [], keyframeTracks: {}, timelineDurationMs: null, reactions: [], warnings: []
+  };
+
+  try {
+    if ("animationStyles" in node && node.animationStyles && node.animationStyles.length) {
+      ctx.presetStyles = JSON.parse(JSON.stringify(node.animationStyles));
+      ctx.supported = true; ctx.source = "motion";
+    }
+  } catch (e) {}
+
+  try {
+    if ("manualKeyframeTracks" in node && node.manualKeyframeTracks) {
+      var tracks = JSON.parse(JSON.stringify(node.manualKeyframeTracks));
+      if (tracks && Object.keys(tracks).length) {
+        ctx.keyframeTracks = tracks;
+        ctx.supported = true; ctx.source = "motion";
+        var maxPos = 0;
+        for (var prop in tracks) {
+          var kfs = (tracks[prop] && tracks[prop].keyframes) || [];
+          for (var i = 0; i < kfs.length; i++) {
+            if (typeof kfs[i].timelinePosition === "number" && kfs[i].timelinePosition > maxPos) maxPos = kfs[i].timelinePosition;
+          }
+        }
+        if (maxPos > 0) ctx.timelineDurationMs = Math.round(maxPos * 1000);
+      }
+    }
+  } catch (e) {}
+
+  try {
+    if ("reactions" in node && node.reactions && node.reactions.length) {
+      ctx.reactions = JSON.parse(JSON.stringify(node.reactions));
+      if (!ctx.supported) {
+        ctx.supported = true; ctx.degraded = true; ctx.source = "reactions";
+        ctx.warnings.push("No Motion animation found; derived from prototype reactions.");
+      }
+    }
+  } catch (e) {}
+
+  if (!ctx.supported) ctx.warnings.push("No motion or prototype reactions on this node.");
+  return ctx;
+}
+
+// Find SLOT nodes under a node (Config 2026 slots are SLOT-typed containers,
+// created via component.createSlot()). Returns a serializable summary.
+function getSlotContext(node) {
+  var ctx = { nodeId: node.id, supported: false, slots: [], warnings: [] };
+  try {
+    var found = [];
+    if (node.type === "SLOT") found.push(node);
+    if (typeof node.findAll === "function") {
+      node.findAll(function (n) { return n.type === "SLOT"; }).forEach(function (s) { found.push(s); });
+    }
+    ctx.supported = true;
+    ctx.slots = found.map(function (s) {
+      var children = s.children || [];
+      return {
+        slotNodeId: s.id,
+        name: s.name,
+        childCount: children.length,
+        children: children.map(function (c) { return { id: c.id, type: c.type, name: c.name }; })
+      };
+    });
+    if (!ctx.slots.length) ctx.warnings.push("No SLOT nodes found under this node.");
+  } catch (e) {
+    ctx.warnings.push("Slot read error: " + e.message);
+  }
+  return ctx;
+}
+
+// Fill a slot: either move an existing node into it (content.fromNodeId) or
+// create a text child (content.text). Returns mutated node ids.
+async function setSlotContent(msg) {
+  var slot = await getNodeByIdCompat(msg.slotNodeId);
+  if (!slot) return { ok: false, error: "Slot not found: " + msg.slotNodeId };
+  if (slot.type !== "SLOT") return { ok: false, error: "Node is not a SLOT: " + msg.slotNodeId + " (type " + slot.type + ")" };
+
+  var content = msg.content || {};
+  var added = [];
+
+  if (content.fromNodeId) {
+    var src = await getNodeByIdCompat(content.fromNodeId);
+    if (!src) return { ok: false, error: "Source node not found: " + content.fromNodeId };
+    slot.appendChild(src);
+    added.push(src.id);
+  } else if (typeof content.text === "string") {
+    var t = figma.createText();
+    try { await figma.loadFontAsync(t.fontName); } catch (e) {
+      try { await figma.loadFontAsync({ family: "Inter", style: "Regular" }); } catch (e2) {}
+    }
+    t.characters = content.text;
+    slot.appendChild(t);
+    added.push(t.id);
+  } else {
+    return { ok: false, error: "content must include 'text' (string) or 'fromNodeId' (string)." };
+  }
+
+  return {
+    ok: true,
+    mutatedNodeIds: [slot.id].concat(added),
+    slot: { id: slot.id, name: slot.name, childCount: (slot.children || []).length }
+  };
+}
+
+// Reads shader usage on a node. Shaders are paints of type "SHADER" that
+// reference a shader by id; the GLSL source is not exposed by the Plugin API.
+// availableShaders is filled by the async handler (listAvailableShaders).
+function getShaderContext(node) {
+  var ctx = { nodeId: node.id, supported: false, degraded: false, shaderFills: [], availableShaders: [], warnings: [] };
+  try {
+    var fills = node.fills;
+    if (Array.isArray(fills)) {
+      ctx.shaderFills = fills
+        .filter(function (p) { return p && p.type === "SHADER"; })
+        .map(function (p) { return JSON.parse(JSON.stringify(p)); });
+    } else {
+      ctx.warnings.push("Node fills are mixed or unavailable.");
+    }
+  } catch (e) {
+    ctx.warnings.push("Could not read fills: " + e.message);
+  }
+  return ctx;
+}
+
+// Capture the fully-resolved animation on a node (node.animations), which the
+// server normalizes into a reusable preset.
+function getResolvedAnimations(node) {
+  var result = { nodeId: node.id, supported: false, animations: {}, warnings: [] };
+  try {
+    if ("animations" in node && node.animations) {
+      var anim = JSON.parse(JSON.stringify(node.animations));
+      result.animations = anim;
+      result.supported = Object.keys(anim).length > 0;
+      if (!result.supported) result.warnings.push("Node has no resolved animations. Apply a preset/animation first.");
+    } else {
+      result.warnings.push("Node does not expose animations.");
+    }
+  } catch (e) {
+    result.warnings.push("Could not read animations: " + e.message);
+  }
+  return result;
+}
+
+// Replay motion onto a node from a list of { field, track } payloads
+// (field = { type:"PROPERTY", name } ; track = { keyframes:[...] }).
+function applyMotionTracks(node, payloads) {
+  var applied = [];
+  var errors = [];
+  var maxT = 0;
+  for (var i = 0; i < payloads.length; i++) {
+    var p = payloads[i] || {};
+    try {
+      node.applyManualKeyframeTrack(p.field, p.track);
+      applied.push(p.field && p.field.name);
+      var kfs = (p.track && p.track.keyframes) || [];
+      for (var m = 0; m < kfs.length; m++) { if (kfs[m].timelinePosition > maxT) maxT = kfs[m].timelinePosition; }
+    } catch (e) {
+      errors.push({ field: p.field && p.field.name, error: String(e.message || e) });
+    }
+  }
+  // The default node timeline is 2s; extend it to cover the last keyframe.
+  if (maxT > 2) {
+    try { if (node.timelines && node.timelines[0]) node.setTimelineDuration(node.timelines[0].id, Math.round((maxT + 0.3) * 100) / 100); } catch (e) {}
+  }
+  return { applied: applied, errors: errors };
+}
+
+// Execute a replication plan (from convertScene): build a scene frame, create each
+// element at its layout, and apply its motion payloads. Returns created ids + errors.
+async function replicateScene(plan) {
+  plan = plan || {};
+  var canvas = plan.canvas || [1920, 1080];
+  var scene = figma.createFrame();
+  scene.name = "Replicated Scene";
+  scene.resize(canvas[0], canvas[1]);
+  scene.clipsContent = true;
+  try { scene.fills = [figma.util.solidPaint(plan.background || "#000000")]; } catch (e) {}
+  scene.x = Math.round(figma.viewport.center.x - canvas[0] / 2);
+  scene.y = Math.round(figma.viewport.center.y - canvas[1] / 2);
+  figma.currentPage.appendChild(scene);
+
+  var created = [], errors = [];
+  var els = plan.elements || [];
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    try {
+      var node;
+      if (el.type === "TEXT") {
+        node = figma.createText();
+        try { await figma.loadFontAsync(node.fontName); }
+        catch (e) { try { await figma.loadFontAsync({ family: "Inter", style: "Regular" }); node.fontName = { family: "Inter", style: "Regular" }; } catch (e2) {} }
+      } else if (el.type === "ELLIPSE") {
+        node = figma.createEllipse();
+      } else if (el.type === "FRAME") {
+        node = figma.createFrame();
+      } else {
+        node = figma.createRectangle(); // RECTANGLE / IMAGE / VECTOR placeholder
+      }
+      scene.appendChild(node);
+
+      var L = el.layout || {};
+      if (el.type === "TEXT") {
+        node.characters = (el.text != null ? el.text : (el.name || "Text"));
+        if (L.fontSize) { try { node.fontSize = L.fontSize; } catch (e) {} }
+      } else if (L.width || L.height) {
+        node.resize(L.width || 100, L.height || 100);
+      }
+      node.x = L.x || 0;
+      node.y = L.y || 0;
+      if (L.fill) { try { node.fills = [figma.util.solidPaint(L.fill)]; } catch (e) {} }
+      node.name = el.name || node.type;
+
+      var res = applyMotionTracks(node, el.payloads || []);
+      for (var j = 0; j < res.errors.length; j++) errors.push({ el: el.name, error: res.errors[j] });
+      if (el.loop) {
+        try { var ps = node.playbackSettings || {}; node.playbackSettings = { autoplay: ps.autoplay !== false, loop: true, muted: !!ps.muted }; } catch (e) {}
+      }
+      created.push(node.id);
+    } catch (e) {
+      errors.push({ el: el && el.name, error: String(e.message || e).slice(0, 160) });
+    }
+  }
+
+  figma.viewport.scrollAndZoomIntoView([scene]);
+  return { ok: errors.length === 0, sceneId: scene.id, created: created, errors: errors };
+}
+
+// Typewriter recipe: reveal text by animating a clip frame's WIDTH, with the
+// glyph-overflow padding fix (measure absoluteRenderBounds vs absoluteBoundingBox
+// so descenders/ascenders/overhang are never shaved). Sequences multiple lines:
+// each types in, holds, erases; the last stays.
+async function textTypewriter(msg) {
+  msg = msg || {};
+  var fontName, fontSize = msg.fontSize, color = msg.color;
+  var sel = figma.currentPage.selection[0];
+  if (msg.fontFamily) {
+    fontName = { family: msg.fontFamily, style: msg.fontStyle || "Regular" };
+  } else if (sel && sel.type === "TEXT") {
+    fontName = (typeof sel.fontName === "symbol") ? sel.getRangeFontName(0, 1) : sel.fontName;
+    if (fontSize == null) fontSize = (typeof sel.fontSize === "symbol") ? sel.getRangeFontSize(0, 1) : sel.fontSize;
+    if (!color) { var sf = (typeof sel.fills === "symbol") ? sel.getRangeFills(0, 1) : sel.fills; if (Array.isArray(sf) && sf[0] && sf[0].type === "SOLID") color = sf[0].color; }
+  } else {
+    fontName = { family: "Inter", style: "Regular" };
+  }
+  if (fontSize == null) fontSize = 72;
+  await figma.loadFontAsync(fontName);
+
+  var frame = msg.canvasNodeId ? await getNodeByIdCompat(msg.canvasNodeId) : null;
+  if (!frame) {
+    frame = figma.createFrame();
+    frame.resize(msg.canvasW || 1920, msg.canvasH || 1080);
+    frame.clipsContent = true;
+    frame.fills = [figma.util.solidPaint(msg.background || "#FFFFFF")];
+    frame.name = "Typewriter";
+    frame.x = Math.round(figma.viewport.center.x - frame.width / 2);
+    frame.y = Math.round(figma.viewport.center.y - frame.height / 2);
+    figma.currentPage.appendChild(frame);
+  }
+  var W = frame.width, H = frame.height;
+
+  var lines = msg.lines || [];
+  var revealSec = msg.revealSec != null ? msg.revealSec : 1.2;
+  var holdSec = msg.holdSec != null ? msg.holdSec : 1.0;
+  var eraseSec = msg.eraseSec != null ? msg.eraseSec : 0.8;
+  var gapSec = msg.gapSec != null ? msg.gapSec : 0.2;
+  var mode = msg.mode || "wipe";
+  var lin = { type: "CUSTOM_CUBIC_BEZIER", easingFunctionCubicBezier: { x1: 0, y1: 0, x2: 1, y2: 1 } };
+  var r4 = function (n) { return Math.round(n * 1e4) / 1e4; };
+
+  var cursor = 0, built = [], errors = [];
+  for (var i = 0; i < lines.length; i++) {
+    var str = lines[i];
+    // measure ink overflow on a standalone visible copy
+    var probe = figma.createText(); probe.fontName = fontName; probe.fontSize = fontSize; probe.characters = str;
+    figma.currentPage.appendChild(probe); probe.x = 0; probe.y = 0;
+    var bb = probe.absoluteBoundingBox, rb = probe.absoluteRenderBounds || bb;
+    var layoutW = bb.width, layoutH = bb.height;
+    var ov = { left: bb.x - rb.x, right: (rb.x + rb.width) - (bb.x + bb.width), top: bb.y - rb.y, bottom: (rb.y + rb.height) - (bb.y + bb.height) };
+    probe.remove();
+
+    var safety = Math.max(2, Math.ceil(fontSize * 0.04));
+    var padL = Math.max(0, ov.left), padR = Math.max(0, ov.right), padT = Math.max(0, ov.top), padB = Math.max(0, ov.bottom);
+    var clipW = Math.ceil(layoutW + padL + padR + 2 * safety);
+    var clipH = Math.ceil(layoutH + padT + padB + 2 * safety);
+
+    var t = figma.createText(); t.fontName = fontName; t.fontSize = fontSize; t.characters = str; if (color) t.fills = [{ type: "SOLID", color: color }];
+    var clip = figma.createFrame(); clip.name = "TW: " + str; clip.clipsContent = true; clip.fills = []; clip.resize(clipW, clipH);
+    clip.appendChild(t); t.x = padL + safety; t.y = padT + safety;
+    frame.appendChild(clip);
+    clip.x = Math.round((W - clipW) / 2); clip.y = Math.round((H - clipH) / 2);
+
+    var isLast = i === lines.length - 1;
+    var kfs = [{ t: cursor, v: 0 }];
+    if (mode === "step") {
+      var cc = Math.max(1, str.length), stepW = clipW / cc, per = revealSec / cc, eps = Math.min(0.0005, per * 0.1);
+      for (var c = 1; c <= cc; c++) { kfs.push({ t: cursor + per * c - eps, v: stepW * (c - 1) }); kfs.push({ t: cursor + per * c, v: stepW * c }); }
+    } else {
+      kfs.push({ t: cursor + revealSec, v: clipW });
+    }
+    var end = cursor + revealSec;
+    kfs.push({ t: end + holdSec, v: clipW }); end += holdSec;
+    if (!isLast) { kfs.push({ t: end + eraseSec, v: 0 }); end += eraseSec; }
+
+    try {
+      clip.applyManualKeyframeTrack({ type: "PROPERTY", name: "WIDTH" }, { keyframes: kfs.map(function (k) { return { timelinePosition: r4(k.t), value: { type: "FLOAT", value: r4(k.v) }, easing: lin }; }) });
+      if (clip.timelines && clip.timelines[0]) clip.setTimelineDuration(clip.timelines[0].id, r4(end + 0.3));
+    } catch (e) { errors.push({ line: str, error: String(e.message || e).slice(0, 140) }); }
+
+    built.push({ line: str, clipId: clip.id, clipWidth: clipW, startSec: r4(cursor), endSec: r4(end), inkOverflow: { left: Math.round(ov.left), right: Math.round(ov.right), top: Math.round(ov.top), bottom: Math.round(ov.bottom) } });
+    cursor = end + (isLast ? 0 : gapSec);
+  }
+
+  figma.viewport.scrollAndZoomIntoView([frame]);
+  return { ok: errors.length === 0, frameId: frame.id, font: fontName, fontSize: fontSize, mode: mode, totalSec: r4(cursor), lines: built, errors: errors };
+}
+
+function isRequestStopped(requestId) {
+  return !!(requestId && stoppedRequests[requestId]);
+}function throwIfRequestStopped(requestId) {
   if (isRequestStopped(requestId)) {
-    throw new Error("Stopped by user from the Figma Local MCP Bridge UI.");
+    throw new Error("Stopped by user from the Free Figma MCP Bridge UI.");
   }
 }
 
