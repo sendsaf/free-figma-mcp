@@ -1,6 +1,6 @@
 {
   "name": "free-figma-mcp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Free Figma MCP server for inspecting and editing Figma Desktop through a local plugin bridge",
   "type": "module",
   "main": "server.js",

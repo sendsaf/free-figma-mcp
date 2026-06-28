@@ -77,6 +77,15 @@ function printConfigJson({ useNpx, name }) {
   process.stdout.write(`${JSON.stringify(json, null, 2)}\n`);
 }
 
+// Decide automatically how the client should launch the server:
+//   - installed from npm (path runs through node_modules) -> use `npx free-figma-mcp`
+//     so the config never points at a folder the user doesn't have.
+//   - running from a cloned repo (contributor) -> point at the local server.js.
+// No need to ask the user about "npx vs local clone".
+function runningFromInstalledPackage() {
+  return serverEntry.split(path.sep).includes("node_modules");
+}
+
 // Buffered line prompter. Using rl.question sequentially with piped (non-TTY)
 // stdin drops lines emitted during await gaps; this queues every line so the
 // flow is reliable for both interactive terminals and scripted input.
@@ -114,9 +123,8 @@ async function runInteractive() {
     process.stdout.write("  5) Exit\n\n");
     const choice = await ask("Choice [1-5]: ");
 
-    const useNpx = ["1", "3"].includes(choice)
-      ? /^y/i.test(await ask("Run the published package via npx instead of this local clone? [y/N]: "))
-      : false;
+    // Auto-detected; --npx not needed in the interactive flow.
+    const useNpx = runningFromInstalledPackage();
 
     if (choice === "1" || choice === "3") {
       await chooseAndConfigure(ask, installer, useNpx);
@@ -125,7 +133,7 @@ async function runInteractive() {
       await offerPluginInstall(ask, installer);
     }
     if (choice === "4") {
-      printConfigJson({ useNpx: false });
+      printConfigJson({ useNpx });
     }
     if (choice === "5" || !["1", "2", "3", "4"].includes(choice)) {
       process.stdout.write("\nNothing to do. Bye.\n");
@@ -219,9 +227,10 @@ async function offerPluginInstall(ask, installer) {
 
 async function runHeadless(args) {
   const installer = createInstaller({ serverEntry, pluginDir, skillsDir });
+  const useNpx = args.npx || runningFromInstalledPackage();
 
   if (args.print) {
-    printConfigJson({ useNpx: Boolean(args.npx), name: args.name });
+    printConfigJson({ useNpx, name: args.name });
     return;
   }
 
@@ -233,7 +242,7 @@ async function runHeadless(args) {
       process.exitCode = 1;
       return;
     }
-    const result = installer.configureClient(args.client, { useNpx: Boolean(args.npx), name: args.name });
+    const result = installer.configureClient(args.client, { useNpx, name: args.name });
     process.stdout.write(`Configured ${result.label}\n  -> ${result.configPath}\n`);
     didSomething = true;
   }
