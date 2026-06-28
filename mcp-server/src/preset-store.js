@@ -2,13 +2,21 @@
 
 import fs from "node:fs";
 
-export function createPresetStore({ localDataDir, presetsPath }) {
+export function createPresetStore({ localDataDir, presetsPath, seedPath = null }) {
   function readAll() {
     try {
       return JSON.parse(fs.readFileSync(presetsPath, "utf8"));
     } catch {
-      return {};
+      /* fall through to the bundled read-only seed */
     }
+    if (seedPath) {
+      try {
+        return JSON.parse(fs.readFileSync(seedPath, "utf8"));
+      } catch {
+        /* ignore */
+      }
+    }
+    return {};
   }
 
   function writeAll(presets) {

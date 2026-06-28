@@ -1,4 +1,4 @@
-# ✅ Setup Complete: figma-local-mcp Now Has Full Feature Parity
+# ✅ Setup Complete: Free Figma MCP Now Has Full Feature Parity
 
 ## What Was Done
 
@@ -141,7 +141,7 @@ Your local MCP now has:
 
 ### Skills reference wrong tools?
 
-The skills use generic tool names like `use_figma`, `get_design_context`, etc. These should automatically resolve to your local MCP tools: `mcp__figma-local-mcp__use_figma`, etc.
+The skills use generic tool names like `use_figma`, `get_design_context`, etc. These should automatically resolve to your local MCP tools: `mcp__free-figma-mcp__use_figma`, etc.
 
 If there are issues, check the skill files and update tool references if needed.
 
@@ -169,4 +169,4 @@ D:\Figma Plugin\figma-local-mcp/
 
 ## Success! 🎉
 
-Your figma-local-mcp now has **complete feature parity** with the official Figma plugin, but with the added benefits of unlimited local usage, offline capability, and full control over the implementation.
+Your Free Figma MCP now has **complete feature parity** with the official Figma plugin, but with the added benefits of unlimited local usage, offline capability, and full control over the implementation.

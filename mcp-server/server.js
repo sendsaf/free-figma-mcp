@@ -8,7 +8,7 @@ import { createCapabilityCache } from "./src/capabilities.js";
 import { createCodeConnectStore } from "./src/code-connect-store.js";
 import { createPresetStore } from "./src/preset-store.js";
 import { registerGuidance } from "./src/guidance.js";
-import { apiCatalogPath, bridgePort, localDataDir, mappingsPath, motionPresetsPath, skillsDir, steeringDir } from "./src/config.js";
+import { apiCatalogPath, bridgePort, bundledPresetsPath, localDataDir, mappingsPath, motionPresetsPath, skillsDir, steeringDir } from "./src/config.js";
 import { registerFigmaTools } from "./src/tools.js";
 
 const bridge = createFigmaBridge({
@@ -25,10 +25,10 @@ const capabilities = createCapabilityCache();
 
 const apiCatalogStore = createApiCatalogStore({ localDataDir, apiCatalogPath });
 
-const presetStore = createPresetStore({ localDataDir, presetsPath: motionPresetsPath });
+const presetStore = createPresetStore({ localDataDir, presetsPath: motionPresetsPath, seedPath: bundledPresetsPath });
 
 const server = new McpServer({
-  name: "figma-local-mcp",
+  name: "free-figma-mcp",
   version: "0.1.0"
 });
 
@@ -44,4 +44,4 @@ const guidance = registerGuidance(server, { skillsDir, steeringDir });
 
 const transport = new StdioServerTransport();
 await server.connect(transport);
-console.error(`[mcp] figma-local-mcp server started (${bridge.getMode()} mode, bridge :${bridge.getPort()}); guidance: ${guidance.skillCount} skills, ${guidance.steeringCount} steering docs`);
+console.error(`[mcp] free-figma-mcp server started (${bridge.getMode()} mode, bridge :${bridge.getPort()}); guidance: ${guidance.skillCount} skills, ${guidance.steeringCount} steering docs`);

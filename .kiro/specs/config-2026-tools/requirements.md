@@ -4,7 +4,7 @@ Feature: config-2026-tools
 
 ## Introduction
 
-This feature expands the **Figma Local MCP** repository with an additive family of MCP tools, Figma plugin handlers, and a companion guidance layer that let an AI agent inspect and assist with the materials introduced at **Figma Config 2026**: Motion (timeline/keyframe animation), Code layers, Shader fills/effects, Slots (GA), Weave graphs, generative-tool scaffolding, and agent context packaging.
+This feature expands the **Free Figma MCP** repository with an additive family of MCP tools, Figma plugin handlers, and a companion guidance layer that let an AI agent inspect and assist with the materials introduced at **Figma Config 2026**: Motion (timeline/keyframe animation), Code layers, Shader fills/effects, Slots (GA), Weave graphs, generative-tool scaffolding, and agent context packaging.
 
 Because several Config 2026 surfaces ship behind Figma beta/waitlist flags and are not guaranteed in the public Plugin API, the system is built around **runtime feature detection with graceful degradation**: a capability probe plus a uniform `{ ok, supported, degraded, reason }` result envelope. All `figma.*` access stays in the plugin sandbox; pure transforms (code generation, bundling, capability normalization) run server-side where they can be unit/property-tested in Node. Each new tool ships with a companion skill/steering doc, and guidance is also exposed over the MCP `prompts`/`resources` capabilities. An optional, dev-only capture/proxy mode aligns tool naming/guidance with Figma's official MCP server without reproducing proprietary prompt text verbatim, and Figma's hosted canvas-agent system prompt is explicitly out of scope.
 

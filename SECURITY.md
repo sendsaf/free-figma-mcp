@@ -17,7 +17,7 @@ Report privately to the repository maintainers with:
 
 ## Local Security Model
 
-Figma Local MCP is a local bridge:
+Free Figma MCP is a local bridge:
 
 - The MCP server listens on localhost for the Figma plugin bridge.
 - The Figma plugin executes commands in the active Figma Desktop document.

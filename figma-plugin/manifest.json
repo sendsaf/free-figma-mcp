@@ -1,5 +1,5 @@
 {
-  "name": "Figma Local MCP Bridge",
+  "name": "Free Figma MCP Bridge",
   "id": "local-figma-mcp-bridge",
   "api": "1.0.0",
   "main": "code.js",
@@ -8,7 +8,7 @@
   "documentAccess": "dynamic-page",
   "networkAccess": {
     "allowedDomains": ["ws://localhost:3055"],
-    "reasoning": "Connects to the user's local Figma Local MCP server running on their own machine."
+    "reasoning": "Connects to the user's local Free Figma MCP server running on their own machine."
   },
   "capabilities": ["textreview"]
 }

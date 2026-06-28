@@ -18,7 +18,7 @@ npm install
 ## Run Each Session
 
 1. Open Figma Desktop.
-2. Run `Plugins -> Development -> Figma Local MCP Bridge`.
+2. Run `Plugins -> Development -> Free Figma MCP Bridge`.
 3. Press `Start` in the plugin window.
 4. Start or restart Kiro so MCP tools are loaded.
 
@@ -42,7 +42,7 @@ Kiro can register the same server as a power-backed MCP server under `powers.mcp
 {
   "powers": {
     "mcpServers": {
-      "power-figma-local-mcp": {
+      "power-free-figma-mcp": {
         "command": "node",
         "args": [
           "C:\\path\\to\\figma-local-mcp\\mcp-server\\server.js"
@@ -63,6 +63,6 @@ Prefer enabling only one local Figma entry per Kiro workspace to avoid duplicate
 If a tool says the Figma plugin is not connected:
 
 - Confirm Figma Desktop is open.
-- Run the Figma Local MCP Bridge plugin.
+- Run the Free Figma MCP Bridge plugin.
 - Press `Start` in the plugin window.
 - Restart Kiro after changing MCP config.

@@ -2,7 +2,7 @@
 
 ## Overview
 
-This feature expands the **Figma Local MCP** (this repository) with a new family of MCP tools and matching Figma plugin handlers that extract context for — and assist with — the materials introduced at **Figma Config 2026** (announced June 24, 2026): **Motion** (timeline/keyframe animation), **Code layers** (code-backed, two-way-synced canvas layers), **Shader fills and effects**, **Generative plugins**, **Weave** (node-based generative visual workflows), **agent skills/connectors/attachments** (context packaging), and the **GA of Slots** in the Plugin API.
+This feature expands the **Free Figma MCP** (this repository) with a new family of MCP tools and matching Figma plugin handlers that extract context for — and assist with — the materials introduced at **Figma Config 2026** (announced June 24, 2026): **Motion** (timeline/keyframe animation), **Code layers** (code-backed, two-way-synced canvas layers), **Shader fills and effects**, **Generative plugins**, **Weave** (node-based generative visual workflows), **agent skills/connectors/attachments** (context packaging), and the **GA of Slots** in the Plugin API.
 
 The expansion is **additive** and follows the repository's existing architecture exactly: every capability is a new MCP tool registered in `mcp-server/src/tools.js` that forwards a typed command through `bridge.sendToFigma(...)`, is handled by a new `case` in the Figma plugin's `figma.ui.onmessage` switch in `figma-plugin/code.js`, and reads/writes through the Figma Plugin API. No existing tools are removed or renamed.
 

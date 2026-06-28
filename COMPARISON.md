@@ -1,4 +1,4 @@
-# Figma Plugin vs figma-local-mcp Comparison
+# Figma Plugin vs Free Figma MCP Comparison
 
 ## Architecture Differences
 
@@ -8,7 +8,7 @@
 - **Connection**: Cloud-based, requires Figma account authentication
 - **Limitations**: Rate limits, requires internet connection
 
-### figma-local-mcp (Your Implementation)
+### Free Figma MCP (Your Implementation)
 - **Location**: `D:\Figma Plugin\figma-local-mcp\`
 - **MCP Server**: Local WebSocket server (`mcp-server/server.js`)
 - **Connection**: Direct connection to Figma Desktop app via plugin bridge
@@ -108,7 +108,7 @@ cp -r "C:\Users\stylw\.claude\plugins\cache\claude-plugins-official\figma\2.1.30
 After copying, you may need to update skill references to use your local MCP tool names:
 
 - Official tools: `mcp__figma__tool_name`
-- Local tools: `mcp__figma-local-mcp__tool_name`
+- Local tools: `mcp__free-figma-mcp__tool_name`
 
 The skills should work as-is since they reference generic tool names like `use_figma`, `get_design_context`, etc.
 

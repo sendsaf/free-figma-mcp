@@ -1,4 +1,4 @@
-# Product Ideas — Figma Local MCP (Motion era)
+# Product Ideas — Free Figma MCP (Motion era)
 
 > Captured 2026-06-26, ~48h after Figma Config 2026 Motion beta. Time-sensitive: the
 > Plugin API exposes far more than Figma documents, and Motion shipped without a

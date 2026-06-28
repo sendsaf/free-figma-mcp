@@ -428,7 +428,7 @@ export function registerFigmaTools(server, { sendToFigma, codeConnectStore, capa
 
   server.tool(
     "create_design_system_rules",
-    "Create frontend implementation rules based on the Figma Local MCP workflow.",
+    "Create frontend implementation rules based on the Free Figma MCP workflow.",
     {
       clientFrameworks: z.string().optional(),
       clientLanguages: z.string().optional()
@@ -438,7 +438,7 @@ export function registerFigmaTools(server, { sendToFigma, codeConnectStore, capa
       const language = args.clientLanguages || "your project languages";
       return textContent(`# Figma MCP Integration Rules
 
-Use the Figma Local MCP tools to translate Figma work into code for ${framework} / ${language}.
+Use the Free Figma MCP tools to translate Figma work into code for ${framework} / ${language}.
 
 Required workflow:
 1. Use get_metadata first for large selections.
@@ -449,7 +449,7 @@ Required workflow:
 6. Prefer existing code components and local Code Connect mappings when get_code_connect_map returns a match.
 7. Use use_figma for write operations in Figma and return node IDs for follow-up edits.
 
-Local server note: fileKey parameters are accepted for compatibility, but this server operates on the active Figma Desktop document connected through the Figma Local MCP Bridge.`);
+Local server note: fileKey parameters are accepted for compatibility, but this server operates on the active Figma Desktop document connected through the Free Figma MCP Bridge.`);
     }
   );
 
@@ -610,7 +610,7 @@ Local server note: fileKey parameters are accepted for compatibility, but this s
       ok: true,
       source: "local",
       user: process.env.USERNAME || process.env.USER || "local-user",
-      server: "figma-local-mcp",
+      server: "free-figma-mcp",
       note: "Local mode is connected to Figma Desktop through a plugin and does not receive Figma account seat/team data."
     })
   );

@@ -1,10 +1,10 @@
 // =============================================================================
-// Figma Local MCP Bridge — Plugin Sandbox (code.js)
+// Free Figma MCP Bridge — Plugin Sandbox (code.js)
 // Receives commands from ui.html (which relays from the MCP WebSocket server)
 // and executes them via the Figma Plugin API.
 // =============================================================================
 
-figma.showUI(__html__, { width: 340, height: 380, title: "Figma Local MCP" });
+figma.showUI(__html__, { width: 340, height: 380, title: "Free Figma MCP" });
 
 var activeRequestId = null;
 var stoppedRequests = {};
@@ -416,7 +416,7 @@ figma.ui.onmessage = async (msg) => {
       // -----------------------------------------------------------------------
       case "create_new_file": {
         const page = figma.createPage();
-        page.name = msg.fileName || "New Figma Local MCP page";
+        page.name = msg.fileName || "New Free Figma MCP page";
         await figma.setCurrentPageAsync(page);
         respond({
           ok: true,
@@ -1074,7 +1074,7 @@ function isRequestStopped(requestId) {
   return !!(requestId && stoppedRequests[requestId]);
 }function throwIfRequestStopped(requestId) {
   if (isRequestStopped(requestId)) {
-    throw new Error("Stopped by user from the Figma Local MCP Bridge UI.");
+    throw new Error("Stopped by user from the Free Figma MCP Bridge UI.");
   }
 }
 

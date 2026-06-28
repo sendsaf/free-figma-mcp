@@ -8,7 +8,7 @@ const mode = process.argv.includes("--kiro") ? "kiro" : "standard";
 
 const standardConfig = {
   mcpServers: {
-    "figma-local-mcp": {
+    "free-figma-mcp": {
       command: "node",
       args: [serverPath],
       env: {}
@@ -19,7 +19,7 @@ const standardConfig = {
 const kiroConfig = {
   powers: {
     mcpServers: {
-      "power-figma-local-mcp": {
+      "power-free-figma-mcp": {
         command: "node",
         args: [serverPath],
         env: {},

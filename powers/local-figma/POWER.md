@@ -1,16 +1,16 @@
 ---
 name: "local-figma"
-displayName: "Figma Local MCP"
-description: "Local Figma Desktop MCP integration for inspecting and modifying the active Figma or FigJam file through a local plugin bridge. Use when working with the figma-local-mcp MCP server, active Figma selections, local use_figma writes, local design-to-code context, local Code Connect-style mappings, or FigJam board edits."
+displayName: "Free Figma MCP"
+description: "Free Figma MCP: local Figma Desktop integration for inspecting and modifying the active Figma or FigJam file through a local plugin bridge. Use when working with the free-figma-mcp MCP server, active Figma selections, local use_figma writes, local design-to-code context, local Code Connect-style mappings, or FigJam board edits."
 keywords: ["figma", "local figma", "mcp", "figma desktop", "use_figma", "design to code", "figjam", "local bridge", "code connect", "design system"]
 author: "Local"
 ---
 
-# Figma Local MCP
+# Free Figma MCP
 
 ## Overview
 
-This power teaches agents how to use the `figma-local-mcp` MCP server. The server exposes official-style Figma MCP tool names, but it runs locally through Figma Desktop and the Figma Local MCP Bridge plugin.
+This power teaches agents how to use the `free-figma-mcp` MCP server. The server exposes official-style Figma MCP tool names, but it runs locally through Figma Desktop and the Free Figma MCP Bridge plugin.
 
 The active Figma Desktop document is the source of truth. `fileKey` parameters are accepted for compatibility, but this local server does not fetch arbitrary cloud files.
 
@@ -24,7 +24,7 @@ Use this power when the user:
 - Wants to inspect local variables, styles, components, or screenshots.
 - Wants local Code Connect-style mappings.
 - Wants to create or inspect FigJam board content through the local bridge.
-- Mentions `figma-local-mcp`, Figma Local MCP, or the Figma Local MCP Bridge.
+- Mentions `free-figma-mcp`, Free Figma MCP, or the Free Figma MCP Bridge.
 
 ## Available MCP Tools
 
@@ -59,7 +59,7 @@ Load the appropriate steering file based on user intent:
 
 ## Critical Local Rules
 
-1. The local bridge requires Figma Desktop plus the Figma Local MCP Bridge plugin window.
+1. The local bridge requires Figma Desktop plus the Free Figma MCP Bridge plugin window.
 2. The MCP server talks to `ws://localhost:3055`.
 3. The active desktop file is used; `fileKey` is compatibility-only.
 4. Use current Figma selection when possible.
@@ -70,7 +70,7 @@ Load the appropriate steering file based on user intent:
 ## Quick Smoke Test
 
 1. Open Figma Desktop.
-2. Run `Plugins -> Development -> Figma Local MCP Bridge`.
+2. Run `Plugins -> Development -> Free Figma MCP Bridge`.
 3. Select a layer.
 4. Ask the agent to call `get_metadata` on the current selection.
 
@@ -93,7 +93,7 @@ If XML comes back, the local power and MCP bridge are working.
 ```json
 {
   "mcpServers": {
-    "figma-local-mcp": {
+    "free-figma-mcp": {
       "command": "node",
       "args": [
         "D:\\Figma Plugin\\figma-local-mcp\\mcp-server\\server.js"
@@ -108,5 +108,5 @@ If XML comes back, the local power and MCP bridge are working.
 
 ---
 
-**MCP Server:** figma-local-mcp  
-**Package:** Local installation (requires figma-local-mcp repository)
+**MCP Server:** free-figma-mcp  
+**Package:** Local installation (requires the Free Figma MCP repository)

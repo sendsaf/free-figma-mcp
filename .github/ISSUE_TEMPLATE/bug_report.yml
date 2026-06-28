@@ -1,5 +1,5 @@
 name: Bug report
-description: Report a reproducible Figma Local MCP issue
+description: Report a reproducible Free Figma MCP issue
 title: "[Bug]: "
 labels: ["bug"]
 body:

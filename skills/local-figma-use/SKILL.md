@@ -6,7 +6,7 @@ disable-model-invocation: false
 
 # Local Figma use_figma Skill
 
-This local MCP server executes `use_figma` code in the active Figma Desktop document through the Figma Local MCP Bridge.
+This local MCP server executes `use_figma` code in the active Figma Desktop document through the Free Figma MCP Bridge.
 
 ## Required Rules
 

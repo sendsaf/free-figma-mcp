@@ -1,7 +1,7 @@
 {
-  "name": "figma-local-mcp-server",
+  "name": "free-figma-mcp",
   "version": "0.1.0",
-  "description": "Figma Local MCP server for inspecting and editing Figma Desktop through a local plugin bridge",
+  "description": "Free Figma MCP server for inspecting and editing Figma Desktop through a local plugin bridge",
   "type": "module",
   "main": "server.js",
   "license": "MIT",
@@ -12,20 +12,41 @@
     "design-to-code",
     "kiro"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sendsaf/free-figma-mcp.git",
+    "directory": "mcp-server"
+  },
+  "homepage": "https://github.com/sendsaf/free-figma-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/sendsaf/free-figma-mcp/issues"
+  },
   "engines": {
     "node": ">=20"
   },
   "bin": {
-    "figma-local-mcp": "./server.js"
+    "free-figma-mcp": "./server.js",
+    "free-figma-mcp-init": "./cli.js"
   },
   "files": [
     "server.js",
-    "src"
+    "cli.js",
+    "src",
+    "skills",
+    "figma-plugin",
+    "powers",
+    "data"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "start": "node server.js",
     "dev": "node --watch server.js",
-    "check": "node --check server.js && node --check src/api-catalog.js && node --check src/bridge.js && node --check src/capabilities.js && node --check src/code-connect-store.js && node --check src/config.js && node --check src/content.js && node --check src/guidance.js && node --check src/preset-store.js && node --check src/schema-probe.js && node --check src/tools.js",
+    "setup": "node cli.js",
+    "prepack": "node scripts/bundle-assets.js",
+    "postpack": "node scripts/clean-assets.js",
+    "check": "node --check server.js && node --check cli.js && node --check scripts/bundle-assets.js && node --check scripts/clean-assets.js && node --check src/api-catalog.js && node --check src/bridge.js && node --check src/capabilities.js && node --check src/code-connect-store.js && node --check src/config.js && node --check src/content.js && node --check src/guidance.js && node --check src/installer.js && node --check src/preset-store.js && node --check src/schema-probe.js && node --check src/tools.js",
     "test": "node --test"
   },
   "dependencies": {
